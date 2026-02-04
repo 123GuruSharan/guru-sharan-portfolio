@@ -6,8 +6,10 @@ Allow: /
 
 User-agent: GPTBot
 Disallow: /
+
 User-agent: Google-Extended
 Disallow: /
+
 User-agent: CCBot
 Disallow: /
 
