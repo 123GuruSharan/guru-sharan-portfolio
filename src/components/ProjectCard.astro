@@ -15,6 +15,7 @@ interface Props {
   tecnologies?: string[];
   icon?: "code" | "message" | "house" | "user";
   slug?: string;
+  disableModal?: boolean;
 }
 
 const {
@@ -25,6 +26,7 @@ const {
   tecnologies = [],
   icon = "code",
   slug,
+  disableModal = false,
 } = Astro.props;
 
 // Generate unique ID for modal
@@ -44,48 +46,91 @@ const IconComponent = iconComponents[icon];
 <div
   class="item-revelar bg-neutral-primary-soft w-full border border-default rounded-base shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col h-full"
 >
-  <button
-    type="button"
-    data-modal-target={modalId}
-    data-modal-toggle={modalId}
-    class="w-full h-48 overflow-hidden block cursor-pointer shrink-0"
-  >
-    {
-      typeof imageUrl === "string" ? (
-        <img
-          class="rounded-t-base object-cover w-full h-full"
-          src={imageUrl}
-          alt={title}
-        />
-      ) : (
-        <Image
-          src={imageUrl}
-          alt={title}
-          class="rounded-t-base object-cover w-full h-full"
-          widths={[400, 800]}
-          sizes="(max-width: 400px) 100vw, 400px"
-          loading="lazy"
-        />
-      )
-    }
-  </button>
-  <div class="p-6 flex flex-col grow">
+  {disableModal && slug ? (
+    <a
+      href={`/projects/${slug}`}
+      class="w-full h-48 overflow-hidden block shrink-0"
+    >
+      {
+        typeof imageUrl === "string" ? (
+          <img
+            class="rounded-t-base object-cover w-full h-full"
+            src={imageUrl}
+            alt={title}
+          />
+        ) : (
+          <Image
+            src={imageUrl}
+            alt={title}
+            class="rounded-t-base object-cover w-full h-full"
+            widths={[400, 800]}
+            sizes="(max-width: 400px) 100vw, 400px"
+            loading="lazy"
+          />
+        )
+      }
+    </a>
+  ) : (
     <button
       type="button"
       data-modal-target={modalId}
       data-modal-toggle={modalId}
-      class="text-left"
+      class="w-full h-48 overflow-hidden block cursor-pointer shrink-0"
     >
-      <h3
-        class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark transition-colors flex items-center gap-2"
-      >
-        <IconComponent
-          size={28}
-          class="text-Orange-vibrant dark:text-Orange-vibrant-dark"
-        />
-        {title}
-      </h3>
+      {
+        typeof imageUrl === "string" ? (
+          <img
+            class="rounded-t-base object-cover w-full h-full"
+            src={imageUrl}
+            alt={title}
+          />
+        ) : (
+          <Image
+            src={imageUrl}
+            alt={title}
+            class="rounded-t-base object-cover w-full h-full"
+            widths={[400, 800]}
+            sizes="(max-width: 400px) 100vw, 400px"
+            loading="lazy"
+          />
+        )
+      }
     </button>
+  )}
+  <div class="p-6 flex flex-col grow">
+    {disableModal && slug ? (
+      <a
+        href={`/projects/${slug}`}
+        class="text-left"
+      >
+        <h3
+          class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark transition-colors flex items-center gap-2"
+        >
+          <IconComponent
+            size={28}
+            class="text-Orange-vibrant dark:text-Orange-vibrant-dark"
+          />
+          {title}
+        </h3>
+      </a>
+    ) : (
+      <button
+        type="button"
+        data-modal-target={modalId}
+        data-modal-toggle={modalId}
+        class="text-left"
+      >
+        <h3
+          class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark transition-colors flex items-center gap-2"
+        >
+          <IconComponent
+            size={28}
+            class="text-Orange-vibrant dark:text-Orange-vibrant-dark"
+          />
+          {title}
+        </h3>
+      </button>
+    )}
     <p class="text-body font-body mb-4">
       {description}
     </p>
@@ -144,7 +189,8 @@ const IconComponent = iconComponents[icon];
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal - only render if modal is not disabled -->
+{!disableModal && (
 <div
   id={modalId}
   tabindex="-1"
@@ -244,3 +290,4 @@ const IconComponent = iconComponents[icon];
     </div>
   </div>
 </div>
+)}

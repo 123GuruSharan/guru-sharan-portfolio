@@ -32,6 +32,7 @@ const projects = allProjects
             projectUrl={project.data.projectUrl}
             tecnologies={project.data.technologies}
             icon={project.data.icon}
+            slug={project.id.replace(".md", "")}
           />
         ))
       }
