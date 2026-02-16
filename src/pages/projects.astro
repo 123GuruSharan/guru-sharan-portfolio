@@ -1,0 +1,173 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+// Obtener todos los proyectos y ordenarlos
+const allProjects = await getCollection("projects");
+const projects = allProjects.sort(
+  (a, b) => (a.data.order || 0) - (b.data.order || 0),
+);
+
+// Obtener todas las tecnologías únicas
+const allTechnologies = [...new Set(projects.flatMap(p => p.data.technologies))].sort();
+---
+
+<Layout
+  title="Proyectos | LugoTech"
+  description="Explora todos mis proyectos de desarrollo full-stack. Soluciones innovadoras y código limpio."
+>
+  <Header />
+
+  <main class="min-h-screen bg-Background-light dark:bg-Background-dark">
+    <section class="flex flex-col justify-center py-20 px-6 md:px-4">
+      <div class="max-w-7xl mx-auto w-full">
+        <!-- Header Section -->
+        <div class="text-center mb-12 max-w-3xl mx-auto">
+          <h1 class="text-5xl font-bold mb-4 text-Text-dark dark:text-white">
+            Todos los Proyectos
+          </h1>
+          <p class="font-medium text-lg text-body dark:text-body-light">
+            Una colección completa de mi trabajo, mostrando soluciones
+            innovadoras y código limpio. Filtra por tecnología o explora todos.
+          </p>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="mb-12">
+          <div class="flex flex-wrap items-center gap-3 justify-center">
+            <button
+              data-filter="all"
+              class="filter-btn active px-4 py-2 rounded-base text-sm font-medium transition-all duration-300 bg-Orange-vibrant text-white dark:bg-Orange-vibrant-dark"
+            >
+              Todos ({projects.length})
+            </button>
+            {allTechnologies.map((tech) => {
+              const count = projects.filter(p => p.data.technologies.includes(tech)).length;
+              return (
+                <button
+                  data-filter={tech}
+                  class="filter-btn px-4 py-2 rounded-base text-sm font-medium transition-all duration-300 bg-neutral-primary-soft dark:bg-card-surface-dark text-Text-dark dark:text-Text-light hover:bg-Orange-vibrant hover:text-white dark:hover:bg-Orange-vibrant-dark border border-Border dark:border-Border-dark"
+                >
+                  {tech} ({count})
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div
+          id="projects-grid"
+          class="grid grid-cols-1 gap-8 place-items-center md:grid-cols-2 xl:grid-cols-3"
+        >
+          {
+            projects.map((project) => (
+              <div
+                class="project-item w-full"
+                data-technologies={JSON.stringify(project.data.technologies)}
+              >
+                <ProjectCard
+                  title={project.data.title}
+                  description={project.data.description}
+                  imageUrl={project.data.image}
+                  projectUrl={project.data.projectUrl}
+                  tecnologies={project.data.technologies}
+                  icon={project.data.icon}
+                  slug={project.id.replace(".md", "")}
+                />
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- No results message -->
+        <div
+          id="no-results"
+          class="hidden text-center py-20"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="mx-auto mb-4 text-body dark:text-body-light"
+            width="64"
+            height="64"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <p class="text-xl font-medium text-body dark:text-body-light">
+            No se encontraron proyectos con esta tecnología
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Filter functionality
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectItems = document.querySelectorAll('.project-item');
+  const noResults = document.getElementById('no-results');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+
+      // Update active button
+      filterButtons.forEach(btn => {
+        btn.classList.remove('active', 'bg-Orange-vibrant', 'text-white', 'dark:bg-Orange-vibrant-dark');
+        btn.classList.add('bg-neutral-primary-soft', 'dark:bg-card-surface-dark', 'text-Text-dark', 'dark:text-Text-light');
+      });
+      button.classList.add('active', 'bg-Orange-vibrant', 'text-white', 'dark:bg-Orange-vibrant-dark');
+      button.classList.remove('bg-neutral-primary-soft', 'dark:bg-card-surface-dark', 'text-Text-dark', 'dark:text-Text-light');
+
+      // Filter projects
+      let visibleCount = 0;
+
+      projectItems.forEach(item => {
+        const technologies = JSON.parse(item.getAttribute('data-technologies') || '[]');
+        const shouldShow = filter === 'all' || technologies.includes(filter);
+
+        if (shouldShow) {
+          item.style.display = 'block';
+          visibleCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // Show/hide no results message
+      if (visibleCount === 0) {
+        noResults?.classList.remove('hidden');
+      } else {
+        noResults?.classList.add('hidden');
+      }
+    });
+  });
+</script>
+
+<style>
+  .filter-btn {
+    transition: all 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .project-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+</style>

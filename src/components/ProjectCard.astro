@@ -14,6 +14,7 @@ interface Props {
   projectUrl: string;
   tecnologies?: string[];
   icon?: "code" | "message" | "house" | "user";
+  slug?: string;
 }
 
 const {
@@ -23,6 +24,7 @@ const {
   projectUrl,
   tecnologies = [],
   icon = "code",
+  slug,
 } = Astro.props;
 
 // Generate unique ID for modal
@@ -90,41 +92,54 @@ const IconComponent = iconComponents[icon];
     <div class="flex flex-wrap gap-2 mt-auto">
       {tecnologies.map((tech) => <Badge label={tech} />)}
     </div>
-    <div class="mt-4 flex gap-2">
-      <a
-        href={projectUrl}
-        target="_blank"
-        rel="noopener noreferrer me"
-        aria-label={`ver el proyecto ${title}`}
-      >
-        <IconsTecnology
-          name="github"
-          class="hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark dark:text-gray-100 cursor-pointer"
-        />
-      </a>
-      <a
-        href={projectUrl}
-        target="_blank"
-        rel="noopener noreferrer me"
-        aria-label={`compartir el proyecto ${title}`}
-        class="text-black dark:text-white hover:text-Orange-vibrant"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-screen-share-icon lucide-screen-share"
-          ><path d="M13 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3"
-          ></path><path d="M8 21h8"></path><path d="M12 17v4"></path><path
-            d="m17 8 5-5"></path><path d="M17 3h5v5"></path></svg
+    <div class="mt-4 flex gap-2 items-center justify-between">
+      <div class="flex gap-2">
+        <a
+          href={projectUrl}
+          target="_blank"
+          rel="noopener noreferrer me"
+          aria-label={`ver el proyecto ${title}`}
         >
-      </a>
+          <IconsTecnology
+            name="github"
+            class="hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark dark:text-gray-100 cursor-pointer"
+          />
+        </a>
+        <a
+          href={projectUrl}
+          target="_blank"
+          rel="noopener noreferrer me"
+          aria-label={`compartir el proyecto ${title}`}
+          class="text-black dark:text-white hover:text-Orange-vibrant"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-screen-share-icon lucide-screen-share"
+            ><path
+              d="M13 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3"
+            ></path><path d="M8 21h8"></path><path d="M12 17v4"></path><path
+              d="m17 8 5-5"></path><path d="M17 3h5v5"></path></svg
+          >
+        </a>
+      </div>
+      {
+        slug && (
+          <a
+            href={`/projects/${slug}`}
+            class="text-sm font-medium text-Orange-vibrant dark:text-Orange-vibrant-dark hover:underline"
+          >
+            Ver más →
+          </a>
+        )
+      }
     </div>
   </div>
 </div>
