@@ -14,6 +14,8 @@ interface Props {
   projectUrl: string;
   tecnologies?: string[];
   icon?: "code" | "message" | "house" | "user";
+  slug?: string;
+  disableModal?: boolean;
 }
 
 const {
@@ -23,6 +25,8 @@ const {
   projectUrl,
   tecnologies = [],
   icon = "code",
+  slug,
+  disableModal = false,
 } = Astro.props;
 
 // Generate unique ID for modal
@@ -42,94 +46,151 @@ const IconComponent = iconComponents[icon];
 <div
   class="item-revelar bg-neutral-primary-soft w-full border border-default rounded-base shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col h-full"
 >
-  <button
-    type="button"
-    data-modal-target={modalId}
-    data-modal-toggle={modalId}
-    class="w-full h-48 overflow-hidden block cursor-pointer shrink-0"
-  >
-    {
-      typeof imageUrl === "string" ? (
-        <img
-          class="rounded-t-base object-cover w-full h-full"
-          src={imageUrl}
-          alt={title}
-        />
-      ) : (
-        <Image
-          src={imageUrl}
-          alt={title}
-          class="rounded-t-base object-cover w-full h-full"
-          widths={[400, 800]}
-          sizes="(max-width: 400px) 100vw, 400px"
-          loading="lazy"
-        />
-      )
-    }
-  </button>
-  <div class="p-6 flex flex-col grow">
+  {disableModal && slug ? (
+    <a
+      href={`/projects/${slug}`}
+      class="w-full h-48 overflow-hidden block shrink-0"
+    >
+      {
+        typeof imageUrl === "string" ? (
+          <img
+            class="rounded-t-base object-cover w-full h-full"
+            src={imageUrl}
+            alt={title}
+          />
+        ) : (
+          <Image
+            src={imageUrl}
+            alt={title}
+            class="rounded-t-base object-cover w-full h-full"
+            widths={[400, 800]}
+            sizes="(max-width: 400px) 100vw, 400px"
+            loading="lazy"
+          />
+        )
+      }
+    </a>
+  ) : (
     <button
       type="button"
       data-modal-target={modalId}
       data-modal-toggle={modalId}
-      class="text-left"
+      class="w-full h-48 overflow-hidden block cursor-pointer shrink-0"
     >
-      <h3
-        class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark transition-colors flex items-center gap-2"
-      >
-        <IconComponent
-          size={28}
-          class="text-Orange-vibrant dark:text-Orange-vibrant-dark"
-        />
-        {title}
-      </h3>
+      {
+        typeof imageUrl === "string" ? (
+          <img
+            class="rounded-t-base object-cover w-full h-full"
+            src={imageUrl}
+            alt={title}
+          />
+        ) : (
+          <Image
+            src={imageUrl}
+            alt={title}
+            class="rounded-t-base object-cover w-full h-full"
+            widths={[400, 800]}
+            sizes="(max-width: 400px) 100vw, 400px"
+            loading="lazy"
+          />
+        )
+      }
     </button>
+  )}
+  <div class="p-6 flex flex-col grow">
+    {disableModal && slug ? (
+      <a
+        href={`/projects/${slug}`}
+        class="text-left"
+      >
+        <h3
+          class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark transition-colors flex items-center gap-2"
+        >
+          <IconComponent
+            size={28}
+            class="text-Orange-vibrant dark:text-Orange-vibrant-dark"
+          />
+          {title}
+        </h3>
+      </a>
+    ) : (
+      <button
+        type="button"
+        data-modal-target={modalId}
+        data-modal-toggle={modalId}
+        class="text-left"
+      >
+        <h3
+          class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark transition-colors flex items-center gap-2"
+        >
+          <IconComponent
+            size={28}
+            class="text-Orange-vibrant dark:text-Orange-vibrant-dark"
+          />
+          {title}
+        </h3>
+      </button>
+    )}
     <p class="text-body font-body mb-4">
       {description}
     </p>
     <div class="flex flex-wrap gap-2 mt-auto">
       {tecnologies.map((tech) => <Badge label={tech} />)}
     </div>
-    <div class="mt-4 flex gap-2">
-      <a
-        href={projectUrl}
-        target="_blank"
-        rel="noopener noreferrer me"
-        aria-label={`ver el proyecto ${title}`}
-      >
-        <IconsTecnology
-          name="github"
-          class="hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark dark:text-gray-100 cursor-pointer"
-        />
-      </a>
-      <a
-        href={projectUrl}
-        target="_blank"
-        rel="noopener noreferrer me"
-        aria-label={`compartir el proyecto ${title}`}
-        class="text-black dark:text-white hover:text-Orange-vibrant"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-screen-share-icon lucide-screen-share"
-          ><path d="M13 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3"
-          ></path><path d="M8 21h8"></path><path d="M12 17v4"></path><path
-            d="m17 8 5-5"></path><path d="M17 3h5v5"></path></svg
+    <div class="mt-4 flex gap-2 items-center justify-between">
+      <div class="flex gap-2">
+        <a
+          href={projectUrl}
+          target="_blank"
+          rel="noopener noreferrer me"
+          aria-label={`ver el proyecto ${title}`}
         >
-      </a>
+          <IconsTecnology
+            name="github"
+            class="hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark dark:text-gray-100 cursor-pointer"
+          />
+        </a>
+        <a
+          href={projectUrl}
+          target="_blank"
+          rel="noopener noreferrer me"
+          aria-label={`compartir el proyecto ${title}`}
+          class="text-black dark:text-white hover:text-Orange-vibrant"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-screen-share-icon lucide-screen-share"
+            ><path
+              d="M13 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3"
+            ></path><path d="M8 21h8"></path><path d="M12 17v4"></path><path
+              d="m17 8 5-5"></path><path d="M17 3h5v5"></path></svg
+          >
+        </a>
+      </div>
+      {
+        slug && (
+          <a
+            href={`/projects/${slug}`}
+            class="text-sm font-medium text-Orange-vibrant dark:text-Orange-vibrant-dark hover:underline"
+          >
+            Ver más →
+          </a>
+        )
+      }
     </div>
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal - only render if modal is not disabled -->
+{!disableModal && (
 <div
   id={modalId}
   tabindex="-1"
@@ -229,3 +290,4 @@ const IconComponent = iconComponents[icon];
     </div>
   </div>
 </div>
+)}
