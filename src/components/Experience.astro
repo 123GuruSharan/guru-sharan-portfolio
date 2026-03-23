@@ -2,7 +2,7 @@
 // Experience component for portfolio
 ---
 
-<section id="experience" class="experience-section py-20 bg-gradient-to-b from-Background-dark to-Background-dark/95">
+<section id="experience" class="experience-section py-20" style="background: radial-gradient(circle at center, #0f172a, #020617);">
   <div class="container mx-auto px-4">
     <h2 class="text-center text-4xl font-bold text-Text-light mb-16">Professional Journey</h2>
 
@@ -11,81 +11,70 @@
       <div class="timeline-line absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-Orange-vibrant to-Cyan-accent h-full rounded-full"></div>
 
       <!-- Experience Item 1 - Left -->
-      <div class="timeline-item flex items-center mb-12 relative">
-        <div class="timeline-content w-full md:w-5/12 md:pr-8 text-right">
-          <div class="timeline-card bg-Background-dark/50 backdrop-blur-sm border border-Neutral-700 rounded-xl p-6 shadow-lg hover:shadow-Orange-vibrant/20 transition-all duration-300 hover:-translate-y-1">
-            <div class="timeline-date inline-block px-3 py-1 bg-Orange-vibrant/20 text-Orange-vibrant text-sm font-medium rounded-full border border-Orange-vibrant/30 mb-4">
-              Jan 2026 – Mar 2026
-            </div>
+      <div class="timeline-item left flex items-center mb-12 relative">
+        <div class="timeline-content w-full md:w-5/12 md:pr-8 text-right mr-14">
+          <div class="timeline-card bg-Background-dark/50 backdrop-blur-sm border border-Neutral-700 rounded-xl p-7 shadow-lg hover:shadow-Orange-vibrant/20 transition-all duration-300 hover:-translate-y-1">
             <h3 class="text-2xl font-bold text-Text-light mb-2">Full Stack Developer Intern</h3>
             <h4 class="text-lg text-Orange-vibrant font-medium mb-4">Happieloop Technologies</h4>
             <ul class="text-Text-light/80 space-y-2">
               <li class="flex items-start justify-end">
-                <span class="text-Orange-vibrant mr-2">•</span>
                 Developed responsive web applications using HTML, CSS, and JavaScript
               </li>
               <li class="flex items-start justify-end">
-                <span class="text-Orange-vibrant mr-2">•</span>
                 Built scalable backend APIs using Node.js and Express.js
               </li>
               <li class="flex items-start justify-end">
-                <span class="text-Orange-vibrant mr-2">•</span>
                 Designed and managed MongoDB databases for real-time applications
               </li>
               <li class="flex items-start justify-end">
-                <span class="text-Orange-vibrant mr-2">•</span>
                 Integrated REST APIs and implemented real-time features using WebSocket
               </li>
               <li class="flex items-start justify-end">
-                <span class="text-Orange-vibrant mr-2">•</span>
                 Improved application performance, debugging, and reliability
               </li>
             </ul>
           </div>
         </div>
-        <div class="timeline-node absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-Orange-vibrant rounded-full border-4 border-Background-dark shadow-lg"></div>
+        <div class="timeline-date absolute left-1/2 transform -translate-x-1/2 px-3.5 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-Orange-vibrant">
+          Jan 2026 – Mar 2026
+        </div>
+        <div class="timeline-node absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-Orange-vibrant rounded-full border-4 border-Background-dark shadow-lg"><span>👤</span></div>
         <div class="hidden md:block w-5/12"></div>
       </div>
 
       <!-- Experience Item 2 - Right -->
-      <div class="timeline-item flex items-center mb-12 relative">
+      <div class="timeline-item right flex items-center mb-12 relative">
         <div class="hidden md:block w-5/12"></div>
-        <div class="timeline-content w-full md:w-5/12 md:pl-8">
-          <div class="timeline-card bg-Background-dark/50 backdrop-blur-sm border border-Neutral-700 rounded-xl p-6 shadow-lg hover:shadow-Cyan-accent/20 transition-all duration-300 hover:-translate-y-1">
-            <div class="timeline-date inline-block px-3 py-1 bg-Cyan-accent/20 text-Cyan-accent text-sm font-medium rounded-full border border-Cyan-accent/30 mb-4">
-              2025 – Present
-            </div>
+        <div class="timeline-content w-full md:w-5/12 md:pl-8 ml-14">
+          <div class="timeline-card bg-Background-dark/50 backdrop-blur-sm border border-Neutral-700 rounded-xl p-7 shadow-lg hover:shadow-Cyan-accent/20 transition-all duration-300 hover:-translate-y-1">
             <h3 class="text-2xl font-bold text-Text-light mb-2">Software Development Intern</h3>
             <h4 class="text-lg text-Cyan-accent font-medium mb-4">Infosys Springboard</h4>
-            <ul class="text-Text-light/80 space-y-2">
+            <ul class="text-Text-light/80 space-y-3">
               <li class="flex items-start">
-                <span class="text-Cyan-accent mr-2">•</span>
                 Developed an automated regression testing web application to streamline testing workflows
               </li>
               <li class="flex items-start">
-                <span class="text-Cyan-accent mr-2">•</span>
                 Designed test automation logic to significantly reduce manual testing effort
               </li>
               <li class="flex items-start">
-                <span class="text-Cyan-accent mr-2">•</span>
                 Built backend services and integrated automated testing pipelines
               </li>
               <li class="flex items-start">
-                <span class="text-Cyan-accent mr-2">•</span>
                 Focused on improving testing speed, accuracy, and reliability
               </li>
               <li class="flex items-start">
-                <span class="text-Cyan-accent mr-2">•</span>
                 Implemented efficient debugging and error-handling mechanisms
               </li>
-              <li class="flex items-start">
-                <span class="text-Cyan-accent mr-2">•</span>
+              <!-- <li class="flex items-start">
                 Worked with modern web technologies to build scalable and maintainable solutions
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>
-        <div class="timeline-node absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-Cyan-accent rounded-full border-4 border-Background-dark shadow-lg"></div>
+        <div class="timeline-date absolute left-1/2 transform -translate-x-1/2 px-3.5 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-Cyan-accent">
+          2025 – Present
+        </div>
+        <div class="timeline-node absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-Cyan-accent rounded-full border-4 border-Background-dark shadow-lg"><span>👤</span></div>
       </div>
     </div>
   </div>
@@ -93,8 +82,9 @@
 
 <style>
   .timeline-line {
-    background: linear-gradient(180deg, #60A5FA, #8B5CF6, #F43F5E);
-    box-shadow: 0 0 12px rgba(99, 102, 241, 0.35);
+    background: linear-gradient(to bottom, #4facfe, #00f2fe);
+    box-shadow: 0 0 10px rgba(0,200,255,0.4);
+    width: 2px;
   }
 
   .timeline-item {
@@ -111,95 +101,147 @@
 
   .timeline-card {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 14px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    max-width: 500px;
+    width: 100%;
+    padding: 28px 40px;
   }
 
   .timeline-card:hover {
-    transform: scale(1.03) translateY(-5px);
-    box-shadow: 0 10px 35px rgba(255, 100, 100, 0.25);
-    border: 1px solid rgba(255, 100, 100, 0.35);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 0 25px rgba(0,200,255,0.2);
   }
 
   .timeline-node {
-    animation: pulse-red 2.4s ease-in-out infinite;
-    width: 18px;
-    height: 18px;
-    box-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(0, 200, 255, 0.1);
+    border: 1px solid rgba(0,200,255,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.8);
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 16px;
   }
 
   .timeline-node:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 18px rgba(239, 68, 68, 0.9), 0 0 30px rgba(220, 38, 38, 0.45);
-  }
-
-  @keyframes pulse-red {
-    0%, 100% { box-shadow: 0 0 10px rgba(239, 68, 68, 0.7); }
-    50% { box-shadow: 0 0 18px rgba(239, 68, 68, 0.35); }
+    transform: scale(1.1);
+    box-shadow: 0 0 18px rgba(79, 172, 254, 0.9);
   }
 
   .timeline-date {
-    cursor: default;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    border-radius: 999px;
+    padding: 6px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    color: #cbd5e1;
+    z-index: 1;
   }
 
-  .timeline-card h3,
-  .timeline-card h4 {
-    transition: color 0.2s ease, text-shadow 0.2s ease;
+  .timeline-date::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: #4facfe;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #4facfe;
+    z-index: -1;
   }
 
-  .timeline-card h3:hover,
-  .timeline-card h4:hover {
+  .timeline-card h3 {
+    font-size: 22px;
     color: #ffffff;
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+  }
+
+  .timeline-card h4 {
+    font-size: 18px;
+    color: #4facfe;
+  }
+
+  .timeline-card ul {
+    list-style: none;
+    padding-left: 0;
   }
 
   .timeline-card ul li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cbd5e1;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
     transition: all 0.2s ease;
     cursor: pointer;
   }
 
+  .timeline-card ul li::before {
+    content: "›";
+    color: #ff4d4d;
+    font-weight: bold;
+  }
+
   .timeline-card ul li:hover {
-    transform: translateX(5px);
+    transform: translateX(3px);
     color: #ffffff;
   }
 
-  .timeline-card ul li span {
-    color: #93c5fd;
-  }
-
-  .timeline-card ul li:hover span {
-    color: #fff;
+  .timeline-card ul li:hover::before {
+    color: #ffffff;
   }
 
   @media (max-width: 768px) {
     .timeline-line {
       left: 20px;
       width: 4px;
-      box-shadow: 0 0 8px rgba(99, 102, 241, 0.25);
+      box-shadow: 0 0 10px rgba(0,200,255,0.4);
     }
     .timeline-node {
       left: 20px;
       transform: translateX(-50%);
-      width: 14px;
-      height: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      font-size: 14px;
     }
     .timeline-card {
       margin-left: 40px;
       width: calc(100% - 60px);
       transform: none;
+      max-width: none;
+      padding: 24px 30px;
     }
     .timeline-card:hover {
       transform: none;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     }
     .timeline-card ul li:hover {
-      transform: translateX(3px);
+      transform: translateX(2px);
+    }
+    .timeline-date {
+      left: 20px;
+      transform: translateX(0);
+      top: 50%;
+    }
+    .timeline-date::before {
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 </style>
