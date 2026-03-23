@@ -1,0 +1,179 @@
+---
+// Experience component for portfolio
+---
+
+<section id="experience" class="experience-section py-20 bg-gradient-to-b from-Background-dark to-Background-dark/95">
+  <div class="container mx-auto px-4">
+    <h2 class="text-center text-4xl font-bold text-Text-light mb-16">Professional Journey</h2>
+
+    <div class="timeline relative max-w-4xl mx-auto">
+      <!-- Timeline Line -->
+      <div class="timeline-line absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-Orange-vibrant to-Cyan-accent h-full rounded-full"></div>
+
+      <!-- Experience Item 1 - Left -->
+      <div class="timeline-item flex items-center mb-12 relative">
+        <div class="timeline-content w-full md:w-5/12 md:pr-8 text-right">
+          <div class="timeline-card bg-Background-dark/50 backdrop-blur-sm border border-Neutral-700 rounded-xl p-6 shadow-lg hover:shadow-Orange-vibrant/20 transition-all duration-300 hover:-translate-y-1">
+            <div class="timeline-date inline-block px-3 py-1 bg-Orange-vibrant/20 text-Orange-vibrant text-sm font-medium rounded-full border border-Orange-vibrant/30 mb-4">
+              Jan 2026 – Mar 2026
+            </div>
+            <h3 class="text-2xl font-bold text-Text-light mb-2">Full Stack Developer Intern</h3>
+            <h4 class="text-lg text-Orange-vibrant font-medium mb-4">Happieloop Technologies</h4>
+            <ul class="text-Text-light/80 space-y-2">
+              <li class="flex items-start justify-end">
+                <span class="text-Orange-vibrant mr-2">•</span>
+                Developed responsive web applications using HTML, CSS, and JavaScript
+              </li>
+              <li class="flex items-start justify-end">
+                <span class="text-Orange-vibrant mr-2">•</span>
+                Built scalable backend APIs using Node.js and Express.js
+              </li>
+              <li class="flex items-start justify-end">
+                <span class="text-Orange-vibrant mr-2">•</span>
+                Designed and managed MongoDB databases for real-time applications
+              </li>
+              <li class="flex items-start justify-end">
+                <span class="text-Orange-vibrant mr-2">•</span>
+                Integrated REST APIs and implemented real-time features using WebSocket
+              </li>
+              <li class="flex items-start justify-end">
+                <span class="text-Orange-vibrant mr-2">•</span>
+                Improved application performance, debugging, and reliability
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-node absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-Orange-vibrant rounded-full border-4 border-Background-dark shadow-lg"></div>
+        <div class="hidden md:block w-5/12"></div>
+      </div>
+
+      <!-- Experience Item 2 - Right -->
+      <div class="timeline-item flex items-center mb-12 relative">
+        <div class="hidden md:block w-5/12"></div>
+        <div class="timeline-content w-full md:w-5/12 md:pl-8">
+          <div class="timeline-card bg-Background-dark/50 backdrop-blur-sm border border-Neutral-700 rounded-xl p-6 shadow-lg hover:shadow-Cyan-accent/20 transition-all duration-300 hover:-translate-y-1">
+            <div class="timeline-date inline-block px-3 py-1 bg-Cyan-accent/20 text-Cyan-accent text-sm font-medium rounded-full border border-Cyan-accent/30 mb-4">
+              2025 – Present
+            </div>
+            <h3 class="text-2xl font-bold text-Text-light mb-2">Software Development Intern</h3>
+            <h4 class="text-lg text-Cyan-accent font-medium mb-4">Infosys Springboard</h4>
+            <ul class="text-Text-light/80 space-y-2">
+              <li class="flex items-start">
+                <span class="text-Cyan-accent mr-2">•</span>
+                Developed an automated regression testing web application to streamline testing workflows
+              </li>
+              <li class="flex items-start">
+                <span class="text-Cyan-accent mr-2">•</span>
+                Designed test automation logic to significantly reduce manual testing effort
+              </li>
+              <li class="flex items-start">
+                <span class="text-Cyan-accent mr-2">•</span>
+                Built backend services and integrated automated testing pipelines
+              </li>
+              <li class="flex items-start">
+                <span class="text-Cyan-accent mr-2">•</span>
+                Focused on improving testing speed, accuracy, and reliability
+              </li>
+              <li class="flex items-start">
+                <span class="text-Cyan-accent mr-2">•</span>
+                Implemented efficient debugging and error-handling mechanisms
+              </li>
+              <li class="flex items-start">
+                <span class="text-Cyan-accent mr-2">•</span>
+                Worked with modern web technologies to build scalable and maintainable solutions
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-node absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-Cyan-accent rounded-full border-4 border-Background-dark shadow-lg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+  }
+
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .timeline-card:hover {
+    box-shadow: 0 10px 30px rgba(255, 165, 0, 0.2);
+  }
+
+  .timeline-card:nth-child(2):hover {
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+  }
+
+  .timeline-node {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(255, 165, 0, 0);
+    }
+  }
+
+  .timeline-node:nth-child(2) {
+    animation: pulse-cyan 2s infinite;
+  }
+
+  @keyframes pulse-cyan {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(0, 255, 255, 0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .timeline-line {
+      left: 20px;
+    }
+    .timeline-node {
+      left: 20px;
+      transform: translateX(-50%);
+    }
+    .timeline-content {
+      width: calc(100% - 40px);
+      margin-left: 40px;
+    }
+    .timeline-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 200);
+        }
+      });
+    }, observerOptions);
+
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    timelineItems.forEach(item => observer.observe(item));
+  });
+</script>
