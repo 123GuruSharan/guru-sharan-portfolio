@@ -1,6 +1,6 @@
 ---
 title: "Beauty API"
-description: "Desarrollo de un backend monolítico en Java 17 para la gestión integral de un salón de belleza. Implementa un motor de reservas, seguridad avanzada con Spring Security (JWT/RBAC) y documentación interactiva de endpoints."
+description: "Development of a monolithic backend in Java 17 for comprehensive beauty salon management. Implements a booking engine, advanced security with Spring Security (JWT/RBAC) and interactive endpoint documentation."
 image: "../../assets/images/beauty-api.png"
 projectUrl: "https://github.com/LugoDv/beauty-api"
 technologies: ["Java 17", "Spring Boot", "MySQL", "JWT", "Swagger"]
@@ -10,31 +10,31 @@ order: 3
 icon: "message"
 ---
 
-# Motor de Reservas y Gestión Empresarial (Spring Boot)
+# Booking Engine and Business Management (Spring Boot)
 
-Una API RESTful robusta diseñada bajo los estándares de la industria corporativa, enfocada en resolver la lógica de negocio compleja de un sistema de citas y la gestión jerárquica de usuarios.
+A robust RESTful API designed under corporate industry standards, focused on solving complex business logic for an appointment system and hierarchical user management.
 
-## 🎯 El Reto
+## 🎯 The Challenge
 
-El sector de servicios requiere sistemas infalibles para la gestión del tiempo. El desafío era construir un núcleo central (Core Backend) que manejara catálogos de servicios, disponibilidad de empleados y programación de citas, con una regla de negocio crítica: **prevenir absolutamente los conflictos de horarios**. Además, el sistema debía diferenciar estrictamente los permisos entre Administradores, Empleados y Clientes.
+The service sector requires infallible systems for time management. The challenge was to build a central core (Core Backend) that handled service catalogs, employee availability and appointment scheduling, with a critical business rule: **absolutely prevent scheduling conflicts**. Additionally, the system had to strictly differentiate permissions between Administrators, Employees and Clients.
 
-## 💡 La Solución y Arquitectura
+## 💡 The Solution and Architecture
 
-Opté por una **arquitectura monolítica en capas** utilizando el ecosistema Spring, ideal para aplicaciones empresariales con modelos de datos altamente relacionales.
+I opted for a **layered monolithic architecture** using the Spring ecosystem, ideal for enterprise applications with highly relational data models.
 
-1. **Capa de Dominio y Persistencia:** Modelado de una base de datos relacional (MySQL) mapeada a través de Spring Data JPA e Hibernate, estableciendo relaciones complejas (OneToMany, ManyToMany) entre Usuarios, Servicios y Citas.
-2. **Capa de Seguridad (RBAC):** Implementación de Spring Security acoplado a JSON Web Tokens (JWT) sin estado. Cada petición es interceptada y validada, asegurando que un Cliente solo vea sus citas, mientras un Administrador tiene control total (CRUD) sobre el sistema.
-3. **Capa de Presentación (Controladores):** Endpoints RESTful estandarizados, con validación de datos de entrada estricta (Bean Validation) y un sistema centralizado de manejo de excepciones (Global Exception Handler) para devolver respuestas HTTP predecibles y limpias.
+1. **Domain and Persistence Layer:** Modeling of a relational database (MySQL) mapped through Spring Data JPA and Hibernate, establishing complex relationships (OneToMany, ManyToMany) between Users, Services and Appointments.
+2. **Security Layer (RBAC):** Implementation of Spring Security coupled with stateless JSON Web Tokens (JWT). Each request is intercepted and validated, ensuring that a Client only sees their appointments, while an Administrator has full control (CRUD) over the system.
+3. **Presentation Layer (Controllers):** Standardized RESTful endpoints, with strict input data validation (Bean Validation) and a centralized exception handling system (Global Exception Handler) to return predictable and clean HTTP responses.
 
-## ⚙️ Aspectos Técnicos Destacados
+## ⚙️ Outstanding Technical Aspects
 
-- **Java 17 & Spring Boot 3:** Aprovechamiento de las últimas características del lenguaje y el framework para un código más limpio y eficiente, reduciendo el _boilerplate_ mediante **Lombok**.
-- **Lógica de Prevención de Conflictos:** Algoritmos a nivel de servicio que consultan la disponibilidad (slots) en tiempo real antes de confirmar una transacción de reserva en la base de datos.
-- **Documentación Interactiva:** Integración de **SpringDoc OpenAPI (Swagger UI)**. Todos los endpoints, modelos de datos (DTOs) y esquemas de autenticación están documentados automáticamente, permitiendo probar la API directamente desde el navegador.
-- **Encriptación de Datos:** Uso de BCrypt para el hashing seguro de contraseñas antes de su persistencia en la base de datos.
+- **Java 17 & Spring Boot 3:** Leveraging the latest language and framework features for cleaner and more efficient code, reducing _boilerplate_ through **Lombok**.
+- **Conflict Prevention Logic:** Service-level algorithms that query availability (slots) in real-time before confirming a booking transaction in the database.
+- **Interactive Documentation:** Integration of **SpringDoc OpenAPI (Swagger UI)**. All endpoints, data models (DTOs) and authentication schemas are automatically documented, allowing the API to be tested directly from the browser.
+- **Data Encryption:** Use of BCrypt for secure password hashing before persistence in the database.
 
-## 📈 Resultados e Impacto
+## 📈 Results and Impact
 
-- **Integración Frontend Acelerada:** Gracias a la documentación exhaustiva en Swagger, cualquier equipo de desarrollo Frontend (React, Angular, móvil) puede consumir la API inmediatamente sin necesidad de leer el código fuente.
-- **Integridad de Datos Garantizada:** Las validaciones a nivel de DTO y las restricciones de base de datos aseguran que no ingrese información corrupta al sistema.
-- **Base Escalable:** El diseño modularizado por dominios (Auth, Users, Services, Appointments) permite que, si el negocio crece, ciertas partes del monolito puedan extraerse fácilmente a microservicios independientes.
+- **Accelerated Frontend Integration:** Thanks to exhaustive Swagger documentation, any Frontend development team (React, Angular, mobile) can consume the API immediately without needing to read the source code.
+- **Guaranteed Data Integrity:** DTO-level validations and database constraints ensure no corrupt information enters the system.
+- **Scalable Foundation:** The modularized design by domains (Auth, Users, Services, Appointments) allows that, if the business grows, certain parts of the monolith can be easily extracted to independent microservices.

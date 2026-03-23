@@ -2,11 +2,12 @@
 import Image from "astro/components/Image.astro";
 import CodeIcon from "./CodeIcon.astro";
 import MessageIcon from "./MessageIcon.astro";
+import mePic from "../assets/images/me_pic.jpg";
 ---
 
 <section
   id="hero"
-  class="relative min-h-screen flex items-center pt-32 pb-20 bg-Background-light dark:bg-Background-dark overflow-hidden"
+  class="relative min-h-screen flex items-center pt-32 pb-24 bg-Background-light dark:bg-Background-dark overflow-hidden"
 >
   <!-- Background Pattern -->
   <div
@@ -63,7 +64,7 @@ import MessageIcon from "./MessageIcon.astro";
                 <h1
                   class="text-5xl md:text-6xl lg:text-7xl font-bold text-Text-dark dark:text-white tracking-tight"
                 >
-                  FabianLugo
+                  GuruSharan
                 </h1>
                 <span class="text-body dark:text-body-light font-mono text-lg"
                   >=</span
@@ -71,11 +72,12 @@ import MessageIcon from "./MessageIcon.astro";
               </div>
             </div>
 
-            <!-- Role/Expertise -->
+            <!-- Role/Expertise with Typing Animation -->
             <div
               class="pl-8 border-l-2 border-Orange-vibrant dark:border-Orange-vibrant-dark"
             >
               <div class="space-y-3">
+                <!-- Typing Animation Role -->
                 <div
                   class="flex items-center gap-2 font-mono text-body dark:text-body-light"
                 >
@@ -85,9 +87,15 @@ import MessageIcon from "./MessageIcon.astro";
                   >
                   <span
                     class="text-Text-dark dark:text-Text-light font-semibold text-xl md:text-2xl"
-                    >"Full Stack Developer"</span
                   >
+                    <span id="typing-text">"Full Stack Developer"</span>
+                    <span
+                      id="cursor"
+                      class="inline-block w-0.5 h-6 md:h-7 bg-Orange-vibrant dark:bg-Orange-vibrant-dark ml-1 animate-pulse"
+                    ></span>
+                  </span>
                 </div>
+                <!-- Focus -->
                 <div
                   class="flex items-center gap-2 font-mono text-body dark:text-body-light"
                 >
@@ -96,9 +104,10 @@ import MessageIcon from "./MessageIcon.astro";
                     >focus:</span
                   >
                   <span class="text-Text-dark dark:text-Text-light"
-                    >"End-to-End Solutions"</span
+                    >"Building scalable web applications with real-world impact"</span
                   >
                 </div>
+                <!-- Stack -->
                 <div
                   class="flex items-start gap-2 font-mono text-body dark:text-body-light"
                 >
@@ -107,7 +116,7 @@ import MessageIcon from "./MessageIcon.astro";
                     >stack:</span
                   >
                   <span class="text-Text-dark dark:text-Text-light"
-                    >['Node.js','React','Java','Typescript']</span
+                    >['Node.js', 'React.js', 'MongoDB', 'JavaScript']</span
                   >
                 </div>
               </div>
@@ -117,13 +126,73 @@ import MessageIcon from "./MessageIcon.astro";
             <p
               class="text-lg md:text-xl text-body dark:text-body-light leading-relaxed max-w-2xl"
             >
-              Construyo sistemas escalables y APIs robustas. Mi especialidad es
-              diseñar arquitecturas backend que manejan complejidad real y
-              mantienen el código limpio.
+              I build full-stack web applications including food delivery platforms
+              and smart tracking systems. Passionate about clean code, scalable backend
+              architecture, and modern UI.
             </p>
 
+            <!-- Social Icons -->
+            <div class="flex gap-4 pt-4">
+              <a
+                href="https://github.com/123GuruSharan"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group inline-flex items-center justify-center w-12 h-12 rounded-lg bg-Background-light dark:bg-Forenground-dark border border-Border dark:border-Border-dark hover:bg-Orange-vibrant hover:border-Orange-vibrant dark:hover:bg-Orange-vibrant-dark dark:hover:border-Orange-vibrant-dark transition-all duration-300 transform hover:scale-110"
+                aria-label="GitHub Profile"
+              >
+                <svg
+                  class="w-6 h-6 text-Text-dark dark:text-Text-light group-hover:text-white transition-colors duration-300"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.016 12.016 0 0024 12c0-6.63-5.37-12-12-12z"
+                  ></path>
+                </svg>
+              </a>
+
+              <a
+                href="https://linkedin.com/in/guru-sharan-kumar-priye"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group inline-flex items-center justify-center w-12 h-12 rounded-lg bg-Background-light dark:bg-Forenground-dark border border-Border dark:border-Border-dark hover:bg-Cyan-accent hover:border-Cyan-accent dark:hover:bg-Cyan-accent-dark dark:hover:border-Cyan-accent-dark transition-all duration-300 transform hover:scale-110"
+                aria-label="LinkedIn Profile"
+              >
+                <svg
+                  class="w-6 h-6 text-Text-dark dark:text-Text-light group-hover:text-white transition-colors duration-300"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.474-2.237-1.668-2.237-.909 0-1.449.613-1.686 1.205-.087.216-.11.517-.11.817v5.784h-3.554s.047-9.39 0-10.373h3.554v1.47c.458-.707 1.276-1.713 3.101-1.713 2.265 0 3.963 1.481 3.963 4.659v5.957zM5.337 8.855c-1.144 0-1.915-.758-1.915-1.704 0-.948.768-1.704 1.959-1.704 1.188 0 1.914.757 1.939 1.704 0 .946-.751 1.704-1.983 1.704zm1.946 11.597H3.392V9.079h3.891v11.373zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  ></path>
+                </svg>
+              </a>
+
+              <a
+                href="mailto:gurusharan4666@gmail.com"
+                class="group inline-flex items-center justify-center w-12 h-12 rounded-lg bg-Background-light dark:bg-Forenground-dark border border-Border dark:border-Border-dark hover:bg-Orange-vibrant hover:border-Orange-vibrant dark:hover:bg-Orange-vibrant-dark dark:hover:border-Orange-vibrant-dark transition-all duration-300 transform hover:scale-110"
+                aria-label="Send Email"
+              >
+                <svg
+                  class="w-6 h-6 text-Text-dark dark:text-Text-light group-hover:text-white transition-colors duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </a>
+            </div>
+
             <!-- Quick stats -->
-            <div class="flex flex-wrap gap-6 pt-2">
+            <div class="flex flex-wrap gap-6 pt-4">
               <div
                 class="flex items-center gap-2 text-Text-dark dark:text-Text-light"
               >
@@ -132,12 +201,8 @@ import MessageIcon from "./MessageIcon.astro";
                   style="animation-duration: 2s;"
                 >
                 </div>
-                <span class="font-mono text-sm">1+ años experiencia</span>
+                <span class="font-mono text-sm">3+ Real-World Projects Built</span>
               </div>
-              <div
-                class="flex items-center gap-2 text-Text-dark dark:text-Text-light"
-              >
-             </div>
             </div>
           </div>
 
@@ -145,56 +210,93 @@ import MessageIcon from "./MessageIcon.astro";
           <div class="item-revelar flex flex-wrap gap-4">
             <a
               href="/projects"
-              class="group inline-flex items-center gap-3 px-6 py-3 text-white bg-Orange-vibrant hover:bg-Orange-vibrant/90 dark:bg-Orange-vibrant-dark dark:hover:bg-Orange-vibrant-dark/90 rounded-lg transition-all font-medium shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              class="group relative inline-flex items-center gap-3 px-8 py-3 text-white bg-Orange-vibrant rounded-lg font-medium overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-Orange-vibrant/50 hover:-translate-y-1 transform"
             >
-              <CodeIcon size={20} />
-              <span>Ver Proyectos</span>
-            </a>
-           <a
-              href="/Fabian_Lugo_CV.pdf"
-              download="Fabian_Lugo_FullStack_CV.pdf"
-              class="group inline-flex items-center gap-3 px-6 py-3 text-Text-dark dark:text-Text-light bg-Background-light dark:bg-Background-dark border-2 border-Border dark:border-Border-dark hover:border-Cyan-accent dark:hover:border-Cyan-accent-dark rounded-lg transition-all font-medium hover:-translate-y-0.5"
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-Orange-vibrant to-Cyan-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <svg
+                class="w-5 h-5 relative z-10"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            <span>Descargar CV</span>
-           </a>          
+                <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"></polyline>
+              </svg>
+              <span class="relative z-10">View Projects</span>
+            </a>
+
+            <a
+              href="#"
+              download
+              class="group relative inline-flex items-center gap-3 px-8 py-3 text-Text-dark dark:text-Text-light bg-Background-light dark:bg-Background-dark border-2 border-Border dark:border-Border-dark rounded-lg font-medium overflow-hidden transition-all duration-300 hover:border-Cyan-accent dark:hover:border-Cyan-accent-dark hover:shadow-xl hover:shadow-Cyan-accent/20 dark:hover:shadow-Cyan-accent-dark/20 hover:-translate-y-1 transform"
+            >
+              <div
+                class="absolute inset-0 bg-Cyan-accent/10 dark:bg-Cyan-accent-dark/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <svg
+                class="w-5 h-5 relative z-10"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span class="relative z-10">Download CV</span>
+            </a>
           </div>
         </div>
 
-        <!-- Avatar with code decoration -->
+        <!-- Avatar with enhanced styling -->
         <div class="lg:col-span-5 flex justify-center lg:justify-end">
           <div class="item-revelar relative">
+            <!-- Animated glow background -->
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-Orange-vibrant/30 to-Cyan-accent/30 dark:from-Orange-vibrant-dark/30 dark:to-Cyan-accent-dark/30 rounded-full blur-2xl animate-pulse"
+              style="animation-duration: 4s;"
+            >
+            </div>
+
             <!-- Code decorations -->
             <div
-              class="absolute -top-6 -left-6 text-Cyan-accent/30 dark:text-Cyan-accent-dark/30 font-mono text-sm"
+              class="absolute -top-8 -left-8 text-Cyan-accent/40 dark:text-Cyan-accent-dark/40 font-mono text-sm md:text-base pointer-events-none"
             >
               {"<dev>"}
             </div>
             <div
-              class="absolute -bottom-6 -right-6 text-Cyan-accent/30 dark:text-Cyan-accent-dark/30 font-mono text-sm"
+              class="absolute -bottom-8 -right-8 text-Cyan-accent/40 dark:text-Cyan-accent-dark/40 font-mono text-sm md:text-base pointer-events-none"
             >
               {"</dev>"}
             </div>
 
-            <!-- Border frame -->
+            <!-- Enhanced border frame with gradient -->
             <div
-              class="absolute inset-0 border-2 border-Border dark:border-Border-dark rounded-2xl"
+              class="absolute inset-0 bg-gradient-to-br from-Orange-vibrant/50 to-Cyan-accent/50 dark:from-Orange-vibrant-dark/50 dark:to-Cyan-accent-dark/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             >
             </div>
             <div
-              class="absolute -inset-2 border border-Orange-vibrant/20 dark:border-Orange-vibrant-dark/20 rounded-2xl"
+              class="absolute inset-0 border-2 border-Border dark:border-Border-dark rounded-full"
+            >
+            </div>
+            <div
+              class="absolute -inset-2 border border-Orange-vibrant/20 dark:border-Orange-vibrant-dark/20 rounded-full"
             >
             </div>
 
+            <!-- Image with floating animation -->
             <Image
               transition:name="perfil"
-              class="object-contain relative z-10 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl"
-              src="/avatar-yo.webp"
-              alt="Fabian Lugo - Full Stack Developer"
+              class="object-cover relative z-10 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full animate-float"
+              src={mePic}
+              alt="Guru Sharan Profile Picture"
               width={410}
               height={536}
               loading={"eager"}
@@ -205,4 +307,105 @@ import MessageIcon from "./MessageIcon.astro";
       </div>
     </div>
   </div>
+
+  <!-- Bouncing Scroll Indicator -->
+  <div
+    class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex justify-center pointer-events-none"
+  >
+    <div class="animate-bounce" style="animation-duration: 2s;">
+      <svg
+        class="w-6 h-6 text-Orange-vibrant dark:text-Orange-vibrant-dark"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </div>
 </section>
+
+<style>
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  .typing {
+    overflow: hidden;
+    border-right: 3px solid;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end);
+  }
+</style>
+
+<script>
+  const roles = [
+    "Full Stack Developer",
+    "AI Enthusiast",
+    "Problem Solver",
+  ];
+
+  let currentRoleIndex = 0;
+  let currentCharIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 100;
+  const pauseTime = 2000;
+
+  const typingElement = document.getElementById("typing-text");
+
+  function typeRole() {
+    if (!typingElement) return;
+
+    const currentRole = roles[currentRoleIndex];
+
+    if (isDeleting) {
+      currentCharIndex--;
+    } else {
+      currentCharIndex++;
+    }
+
+    const displayedText = currentRole.substring(0, currentCharIndex);
+    typingElement.textContent = `"${displayedText}"`;
+
+    if (!isDeleting && currentCharIndex === currentRole.length) {
+      isDeleting = true;
+      setTimeout(typeRole, pauseTime);
+      return;
+    }
+
+    if (isDeleting && currentCharIndex === 0) {
+      isDeleting = false;
+      currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+      setTimeout(typeRole, 200);
+      return;
+    }
+
+    const delay = isDeleting ? typingSpeed / 2 : typingSpeed;
+    setTimeout(typeRole, delay);
+  }
+
+  // Start the typing animation
+  typeRole();
+</script>

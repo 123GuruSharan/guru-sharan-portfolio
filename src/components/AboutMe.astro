@@ -19,6 +19,13 @@ import Badge from "./badge.astro";
     <div
       class="bg-neutral-primary-soft text-body block w-full p-6 border border-default rounded-base shadow-xs"
     >
+      <!-- Tagline -->
+      <div class="mb-4 text-center">
+        <p class="text-Orange-vibrant dark:text-Orange-vibrant-dark font-semibold text-lg italic">
+          "Building scalable web apps with real-world impact"
+        </p>
+      </div>
+
       <h3
         class="mb-3 text-2xl font-bold text-Forenground-dark dark:text-Background-light tracking-tight leading-8"
       >
@@ -26,51 +33,54 @@ import Badge from "./badge.astro";
           size={32}
           class="inline-block mr-2 mb-1 text-Orange-vibrant dark:text-Orange-vibrant-dark"
         />
-        Who I Am
+        Who I Am as a Developer
       </h3>
       <p class="mb-4 text-body leading-relaxed text-lg">
-        Soy desarrollador web y me dedico a que las aplicaciones funcionen bien,
-        desde la lógica del servidor hasta lo que ve el usuario. Mi fuerte es el
-        backend, donde trabajo con Java y PHP para sistemas empresariales que
-        requieren estabilidad, pero también uso Node.js cuando el proyecto pide
-        más agilidad.
+        I am a Full Stack Developer focused on building real-world web applications that solve practical problems. I specialize in developing responsive frontends using React and building scalable backend systems with Node.js and MongoDB.
       </p>
 
       <p class="mb-4 text-body leading-relaxed text-lg">
-        En el frontend me apoyo en React y TypeScript para construir interfaces
-        donde la prioridad es la usabilidad y el orden del código.
+        I have built projects like a full-stack food delivery platform with authentication and real-time features, a dynamic bookstore with advanced filtering, and an airport lost & found tracking system.
+      </p>
+
+      <p class="mb-4 text-body leading-relaxed text-lg">
+        I am passionate about writing clean, efficient code and continuously improving my problem-solving skills.
       </p>
 
       <div class="contenedor-revelar mt-6 grid grid-cols-3 gap-3 text-center">
         <div
-          class="item-revelar bg-Background-light dark:bg-Forenground-dark rounded-base shadow-xs p-3"
+          class="item-revelar bg-Background-light dark:bg-Forenground-dark rounded-base shadow-xs p-3 hover:shadow-lg hover:shadow-Orange-vibrant/20 dark:hover:shadow-Orange-vibrant-dark/20 transition-all duration-300 stat-card cursor-pointer"
+          onclick="scrollToSection('projects')"
         >
           <div
-            class="font-bold text-3xl text-Orange-vibrant dark:text-Orange-vibrant-dark"
+            class="font-bold text-3xl text-Orange-vibrant dark:text-Orange-vibrant-dark stat-number"
+            data-target="3"
           >
-            30
+            0
           </div>
-          <div class="text-sm text-body">Repositories</div>
+          <div class="text-sm text-body">Projects Built</div>
         </div>
         <div
-          class="item-revelar bg-Background-light dark:bg-Forenground-dark rounded-base shadow-xs p-3"
+          class="item-revelar bg-Background-light dark:bg-Forenground-dark rounded-base shadow-xs p-3 hover:shadow-lg hover:shadow-Cyan-accent/20 dark:hover:shadow-Cyan-accent-dark/20 transition-all duration-300 stat-card"
         >
           <div
-            class="font-bold text-3xl text-Orange-vibrant dark:text-Orange-vibrant-dark"
+            class="font-bold text-lg text-Cyan-accent dark:text-Cyan-accent-dark leading-tight"
           >
-            400
+            Full Stack
           </div>
-          <div class="text-sm text-body">Commits</div>
+          <div class="text-sm text-body">Intern Experience</div>
         </div>
         <div
-          class="item-revelar bg-Background-light dark:bg-Forenground-dark rounded-base shadow-xs p-3"
+          class="item-revelar bg-Background-light dark:bg-Forenground-dark rounded-base shadow-xs p-3 hover:shadow-lg hover:shadow-Orange-vibrant/20 dark:hover:shadow-Orange-vibrant-dark/20 transition-all duration-300 stat-card cursor-pointer"
+          onclick="openDSALink()"
         >
           <div
-            class="font-bold text-3xl text-Orange-vibrant dark:text-Orange-vibrant-dark"
+            class="font-bold text-3xl text-Orange-vibrant dark:text-Orange-vibrant-dark stat-number"
+            data-target="100"
           >
-            4
+            0
           </div>
-          <div class="text-sm text-body">Followers</div>
+          <div class="text-sm text-body">DSA Rank</div>
         </div>
       </div>
     </div>
@@ -83,25 +93,204 @@ import Badge from "./badge.astro";
           size={32}
           class="inline-block mr-2 mb-1 text-Orange-vibrant dark:text-Orange-vibrant-dark"
         />
-        My toolsbox
+        My Toolbox
       </h3>
       <div class="space-y-4">
-        <ProgressBar label="Backend" percentage={90} />
         <ProgressBar label="Frontend" percentage={85} />
-        <ProgressBar label="DevOps" percentage={75} />
+        <ProgressBar label="Backend" percentage={90} />
+        <ProgressBar label="Problem Solving" percentage={80} />
       </div>
-      <div class="mt-6 flex flex-wrap gap-4">
-        <Badge label="Java" />
-        <Badge label="Php" />
-        <Badge label="Node.js" />
-        <Badge label="TypeScript" />
-        <Badge label="React" />
-        <Badge label="Astro" />
-        <Badge label="Tailwind CSS" />
-        <Badge label="Docker" />
-        <Badge label="Linux" />
-        <Badge label="Git" />
+      <div class="mt-6">
+        <p class="text-sm text-body dark:text-body-light mb-3 font-medium">
+          Technologies I use regularly
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <Badge label="React.js" />
+          <Badge label="Node.js" />
+          <Badge label="Express.js" />
+          <Badge label="MongoDB" />
+          <Badge label="JavaScript" />
+          <Badge label="C++" />
+          <Badge label="PHP" />
+          <Badge label="MySQL" />
+          <Badge label="Git" />
+          <Badge label="GitHub" />
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* Hover glow effects for cards */
+  .about-me .grid > div {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .about-me .grid > div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg,
+      rgba(255, 107, 53, 0) 0%,
+      rgba(255, 107, 53, 0.3) 50%,
+      rgba(0, 255, 255, 0.3) 100%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .about-me .grid > div:hover::before {
+    opacity: 1;
+  }
+
+  .about-me .grid > div:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15),
+                0 0 30px rgba(255, 107, 53, 0.2),
+                0 0 60px rgba(0, 255, 255, 0.1);
+  }
+
+  .dark .about-me .grid > div:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(255, 107, 53, 0.3),
+                0 0 60px rgba(0, 255, 255, 0.2);
+  }
+
+  /* Enhanced stats card hover effects */
+  .about-me .stat-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .about-me .stat-card:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1),
+                0 0 20px rgba(255, 107, 53, 0.15);
+  }
+
+  .dark .about-me .stat-card:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(255, 107, 53, 0.25);
+  }
+
+  /* Smooth fade-in animation for the section */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .about-me {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  /* Count-up animation */
+  @keyframes countUp {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .stat-number {
+    animation: countUp 0.6s ease-out forwards;
+  }
+</style>
+
+<script>
+  // Count-up animation for stats
+  function animateStats() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const statsSection = document.querySelector('.contenedor-revelar');
+
+    if (!statsSection) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          statNumbers.forEach((stat, index) => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const startTime = performance.now();
+
+            function updateNumber(currentTime) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+
+              // Easing function for smooth animation
+              const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+              const currentValue = Math.floor(target * easeOutQuart);
+
+              stat.textContent = currentValue;
+
+              if (progress < 1) {
+                requestAnimationFrame(updateNumber);
+              } else {
+                stat.textContent = target;
+                // Add suffix for projects
+                if (stat.nextElementSibling.textContent.includes('Projects')) {
+                  stat.textContent = target + '+';
+                }
+                // Add prefix for DSA rank
+                if (stat.nextElementSibling.textContent.includes('DSA')) {
+                  stat.textContent = 'Top ' + target;
+                }
+              }
+            }
+
+            // Delay each stat animation slightly
+            setTimeout(() => {
+              requestAnimationFrame(updateNumber);
+            }, index * 200);
+          });
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '0px 0px -100px 0px'
+    });
+
+    observer.observe(statsSection);
+  }
+
+  // Scroll to section function
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
+
+  // Open DSA link function (placeholder for now)
+  function openDSALink() {
+    // Placeholder - you can replace this with actual DSA profile link
+    window.open('https://example.com/dsa-profile', '_blank');
+    // Or show a message
+    // alert('DSA Profile - Coming Soon!');
+  }
+
+  // Initialize animations
+  document.addEventListener('DOMContentLoaded', animateStats);
+  document.addEventListener('astro:page-load', animateStats);
+</script>

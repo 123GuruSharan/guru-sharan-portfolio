@@ -157,3 +157,18 @@ body {
 .item-revelar:nth-child(6).animate-in {
   animation-delay: 1s;
 }
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Active Navigation Link Styling */
+nav a.active {
+  color: hsl(27, 100%, 51%);
+  font-weight: 600;
+}
+
+.dark nav a.active {
+  color: hsl(22, 100%, 64%);
+}

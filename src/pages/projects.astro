@@ -5,19 +5,19 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
-// Obtener todos los proyectos y ordenarlos
+// Get all projects and sort them
 const allProjects = await getCollection("projects");
 const projects = allProjects.sort(
   (a, b) => (a.data.order || 0) - (b.data.order || 0),
 );
 
-// Obtener todas las tecnologías únicas
+// Get all unique technologies
 const allTechnologies = [...new Set(projects.flatMap(p => p.data.technologies))].sort();
 ---
 
 <Layout
-  title="Proyectos | LugoTech"
-  description="Explora todos mis proyectos de desarrollo full-stack. Soluciones innovadoras y código limpio."
+  title="Projects | LugoTech"
+  description="Explore all my full-stack development projects. Innovative solutions and clean code."
 >
   <Header />
 
@@ -32,11 +32,11 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.data.technologies))]
         <div class="mb-20">
           <div class="max-w-5xl">
             <h1 class="text-7xl md:text-8xl xl:text-9xl font-bold mb-8 text-Text-dark dark:text-white leading-[0.9] tracking-tight">
-              Proyectos<span class="text-Orange-vibrant dark:text-Orange-vibrant-dark">.</span>
+              Projects<span class="text-Orange-vibrant dark:text-Orange-vibrant-dark">.</span>
             </h1>
             <p class="text-xl md:text-2xl text-body dark:text-body-light max-w-2xl leading-relaxed font-light">
-              Una colección de soluciones innovadoras y código limpio.
-              <span class="text-Text-dark dark:text-Text-light font-medium">Explora, filtra, inspírate.</span>
+              A collection of innovative solutions and clean code.
+              <span class="text-Text-dark dark:text-Text-light font-medium">Explore, filter, get inspired.</span>
             </p>
           </div>
         </div>
@@ -45,7 +45,7 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.data.technologies))]
         <div class="mb-16">
           <div class="flex items-center gap-4 mb-6">
             <span class="text-sm font-mono uppercase tracking-wider text-body dark:text-body-light">
-              Filtrar por
+              Filter by
             </span>
             <div class="h-px bg-Border dark:bg-Border-dark flex-1"></div>
           </div>
@@ -55,7 +55,7 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.data.technologies))]
               data-filter="all"
               class="filter-btn active group relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 bg-Orange-vibrant text-white dark:bg-Orange-vibrant-dark overflow-hidden"
             >
-              <span class="relative z-10">Todos</span>
+              <span class="relative z-10">All</span>
               <span class="filter-count ml-2 relative z-10 opacity-75">{projects.length}</span>
               <div class="absolute inset-0 bg-gradient-to-r from-Orange-vibrant to-Cyan-accent dark:from-Orange-vibrant-dark dark:to-Cyan-accent-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
@@ -80,7 +80,7 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.data.technologies))]
           <p id="projects-counter" class="text-sm font-mono text-body dark:text-body-light">
             <span class="text-Orange-vibrant dark:text-Orange-vibrant-dark font-bold" id="visible-count">{projects.length}</span>
             <span class="mx-2">/</span>
-            <span>{projects.length} proyectos</span>
+            <span>{projects.length} projects</span>
           </p>
         </div>
 

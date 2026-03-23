@@ -1,0 +1,198 @@
+---
+// Skills section component
+---
+
+<section id="skills" class="py-20 bg-Background-light dark:bg-Background-dark">
+  <div class="container mx-auto px-6 md:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-Text-dark dark:text-white mb-4">
+        Skills
+      </h2>
+      <p class="text-lg text-body dark:text-body-light max-w-2xl mx-auto">
+        Technologies and tools I use to bring ideas to life
+      </p>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <!-- Frontend Skills -->
+      <div class="item-revelar space-y-6">
+        <div class="flex items-center gap-4">
+          <div class="w-1 h-16 bg-Cyan-accent dark:bg-Cyan-accent-dark rounded-full accent-line"></div>
+          <h3 class="text-2xl font-semibold text-Text-dark dark:text-white">
+            Frontend
+          </h3>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <span class="skill-chip skill-chip-1">HTML</span>
+          <span class="skill-chip skill-chip-2">CSS</span>
+          <span class="skill-chip skill-chip-3">JavaScript</span>
+          <span class="skill-chip skill-chip-4">Bootstrap</span>
+          <span class="skill-chip skill-chip-5">React.js</span>
+        </div>
+      </div>
+
+      <!-- Backend Skills -->
+      <div class="item-revelar space-y-6">
+        <div class="flex items-center gap-4">
+          <div class="w-1 h-16 bg-Orange-vibrant dark:bg-Orange-vibrant-dark rounded-full accent-line"></div>
+          <h3 class="text-2xl font-semibold text-Text-dark dark:text-white">
+            Backend
+          </h3>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <span class="skill-chip skill-chip-1">Node.js</span>
+          <span class="skill-chip skill-chip-2">Express.js</span>
+          <span class="skill-chip skill-chip-3">PHP</span>
+          <span class="skill-chip skill-chip-4">Java</span>
+          <span class="skill-chip skill-chip-5">Python</span>
+          <span class="skill-chip skill-chip-6">C++</span>
+        </div>
+      </div>
+
+      <!-- Database Skills -->
+      <div class="item-revelar space-y-6">
+        <div class="flex items-center gap-4">
+          <div class="w-1 h-16 bg-green-500 rounded-full accent-line"></div>
+          <h3 class="text-2xl font-semibold text-Text-dark dark:text-white">
+            Database
+          </h3>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <span class="skill-chip skill-chip-1">MongoDB</span>
+          <span class="skill-chip skill-chip-2">MySQL</span>
+        </div>
+      </div>
+
+      <!-- Tools Skills -->
+      <div class="item-revelar space-y-6">
+        <div class="flex items-center gap-4">
+          <div class="w-1 h-16 bg-purple-500 rounded-full accent-line"></div>
+          <h3 class="text-2xl font-semibold text-Text-dark dark:text-white">
+            Tools
+          </h3>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <span class="skill-chip skill-chip-1">Git</span>
+          <span class="skill-chip skill-chip-2">GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skill-chip {
+    padding: 0.5rem 1rem;
+    background-color: var(--color-Background-light);
+    border: 1px solid var(--color-Border);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-Text-dark);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+
+  .dark .skill-chip {
+    background-color: var(--color-Forenground-dark);
+    border-color: var(--color-Border-dark);
+    color: var(--color-Text-light);
+  }
+
+  .skill-chip.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .skill-chip:hover {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3),
+                0 0 20px rgba(59, 130, 246, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .skill-chip:hover {
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4),
+                0 0 20px rgba(59, 130, 246, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Stagger animation delays for each chip */
+  .skill-chip-1.animate-in { animation-delay: 0.1s; }
+  .skill-chip-2.animate-in { animation-delay: 0.2s; }
+  .skill-chip-3.animate-in { animation-delay: 0.3s; }
+  .skill-chip-4.animate-in { animation-delay: 0.4s; }
+  .skill-chip-5.animate-in { animation-delay: 0.5s; }
+  .skill-chip-6.animate-in { animation-delay: 0.6s; }
+
+  /* Floating effect for the section */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  #skills {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  /* Pulse effect for accent lines */
+  @keyframes pulse-accent {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .accent-line {
+    animation: pulse-accent 3s ease-in-out infinite;
+  }
+</style>
+
+<script>
+  // Intersection Observer for skills section animations
+  function initSkillsAnimations() {
+    const skillsSection = document.getElementById('skills');
+    const skillChips = document.querySelectorAll('.skill-chip');
+    const categoryHeaders = document.querySelectorAll('.item-revelar');
+
+    if (!skillsSection) return;
+
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '-50px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Trigger category headers animation
+          categoryHeaders.forEach((header, index) => {
+            setTimeout(() => {
+              header.classList.add('animate-in');
+            }, index * 200);
+          });
+
+          // Trigger skill chips animation with stagger
+          skillChips.forEach((chip, index) => {
+            setTimeout(() => {
+              chip.classList.add('animate-in');
+            }, 800 + (index * 100)); // Start after headers, then stagger
+          });
+
+          // Stop observing after animation is triggered
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    observer.observe(skillsSection);
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initSkillsAnimations);
+
+  // Re-initialize on Astro page navigation
+  document.addEventListener('astro:page-load', initSkillsAnimations);
+</script>

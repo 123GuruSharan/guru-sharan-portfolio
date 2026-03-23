@@ -1,6 +1,6 @@
 ---
 title: "Plataforma de alquiler vacacional Daxbnb"
-description: "Desarrollé un sistema completo de alquiler vacacional donde el desafío principal fue la lógica de disponibilidad. Implementé un motor de reservas en tiempo real que previene conflictos de fechas y un sistema de filtros avanzados que permite segmentar búsquedas por precio, ubicación y características."
+description: "I developed a complete vacation rental system where the main challenge was the availability logic. I implemented a real-time booking engine that prevents date conflicts and an advanced filtering system that allows searches to be segmented by price, location and features."
 image: "../../assets/images/daxbnb.png"
 projectUrl: "https://github.com/yourusername/daxbnb"
 technologies: ["Java", "MySQL", "Bootstrap", "Docker"]

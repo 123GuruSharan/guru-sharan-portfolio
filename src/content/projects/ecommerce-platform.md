@@ -1,6 +1,6 @@
 ---
 title: "GlobalLeaders USA"
-description: "Desarrollé una solución integral que incluye la maquetación del chat, la lógica conversacional en Python y su integración como plugin. Implementé un sistema multi-idioma y me encargué del despliegue profesional mediante Docker en el servidor del cliente, asegurando un entorno estable y escalable."
+description: "I developed a comprehensive solution that includes the chat layout, conversational logic in Python and its integration as a plugin. I implemented a multi-language system and handled professional deployment through Docker on the client's server, ensuring a stable and scalable environment."
 image: "../../assets/images/global-leaders.png"
 projectUrl: "https://regalexia.com/trabaja-campamento-verano-eeuu-global-leaders-usa/"
 technologies: ["Python", "FastAPI", "PHP", "Docker"]
@@ -10,31 +10,31 @@ order: 1
 icon: "code"
 ---
 
-# Microservicio Conversacional Bilingüe para Captación de Leads
+# Bilingual Conversational Microservice for Lead Capture
 
-Un asistente virtual inteligente diseñado para integrarse nativamente en un entorno WordPress, enfocado en automatizar la atención al cliente y aumentar la tasa de conversión de usuarios interesados en programas de intercambio en EE. UU.
+An intelligent virtual assistant designed to integrate natively into a WordPress environment, focused on automating customer service and increasing the conversion rate of users interested in exchange programs in the US.
 
-## El Reto
+## The Challenge
 
-El cliente (Regalexia / GlobalLeaders USA) necesitaba una forma interactiva y escalable de atender a los visitantes de su landing page en tiempo real, resolviendo dudas frecuentes en múltiples idiomas y capturando datos de contacto (leads) sin saturar al equipo humano de soporte. La solución debía integrarse sin fricción en su ecosistema web existente basado en PHP/WordPress.
+The client (Regalexia / GlobalLeaders USA) needed an interactive and scalable way to serve visitors to their landing page in real-time, resolving frequent questions in multiple languages and capturing contact data (leads) without overwhelming the human support team. The solution had to integrate frictionlessly into their existing PHP/WordPress-based web ecosystem.
 
-## La Solución y Arquitectura
+## The Solution and Architecture
 
-En lugar de sobrecargar el servidor principal con lógica pesada, diseñé una **arquitectura desacoplada**:
+Instead of overloading the main server with heavy logic, I designed a **decoupled architecture**:
 
-1. **Microservicio Backend (FastAPI):** Desarrollé una API REST ultrarrápida y asíncrona en Python utilizando FastAPI. Este microservicio actúa como el "cerebro" del chatbot, procesando la lógica conversacional, el manejo del estado y la detección del idioma del usuario.
-2. **Integración Frontend (PHP/JavaScript):** Creé un plugin personalizado y ligero para WordPress que inyecta la interfaz de usuario (UI) del chat y se comunica de forma asíncrona con el microservicio a través de peticiones HTTP.
-3. **Contenerización y Despliegue:** Para garantizar que la aplicación funcionara exactamente igual en desarrollo que en producción, dockericé el backend y lo desplegué de forma independiente en el servidor del cliente.
+1. **Backend Microservice (FastAPI):** I developed an ultra-fast and asynchronous REST API in Python using FastAPI. This microservice acts as the "brain" of the chatbot, processing conversational logic, state management and user language detection.
+2. **Frontend Integration (PHP/JavaScript):** I created a custom and lightweight WordPress plugin that injects the chat user interface (UI) and communicates asynchronously with the microservice through HTTP requests.
+3. **Containerization and Deployment:** To ensure the application worked exactly the same in development as in production, I containerized the backend and deployed it independently on the client's server.
 
-## Aspectos Técnicos Destacados
+## Outstanding Technical Aspects
 
-- **FastAPI & Python:** Uso de programación asíncrona (`async/await`) para manejar múltiples conexiones concurrentes sin bloqueo.
-- **Seguridad Perimetral:** Implementación de políticas **CORS** estrictas (limitadas al dominio del cliente) y **Rate Limiting** para prevenir ataques de denegación de servicio (DDoS) o abuso del endpoint por bots maliciosos.
-- **Soporte Multi-idioma:** Lógica de enrutamiento dinámico que adapta las respuestas del bot según las preferencias del navegador del usuario o su selección explícita.
-- **Docker:** Creación de un `Dockerfile` optimizado (multietapa) para reducir el peso de la imagen y aislar las dependencias de Python del resto del servidor.
+- **FastAPI & Python:** Use of asynchronous programming (`async/await`) to handle multiple concurrent connections without blocking.
+- **Perimeter Security:** Implementation of strict **CORS** policies (limited to the client's domain) and **Rate Limiting** to prevent denial of service (DDoS) attacks or endpoint abuse by malicious bots.
+- **Multi-language Support:** Dynamic routing logic that adapts bot responses according to the user's browser preferences or explicit selection.
+- **Docker:** Creation of an optimized `Dockerfile` (multi-stage) to reduce image weight and isolate Python dependencies from the rest of the server.
 
-## Resultados e Impacto en el Negocio
+## Business Results and Impact
 
-- **Aumento de la conversión:** La implementación del bot logró incrementar significativamente la convergencia de leads (usuarios que dejan sus datos tras interactuar con el asistente).
-- **Estabilidad garantizada:** Gracias a la arquitectura contenerizada y las políticas de Rate Limiting, el servicio mantiene un _uptime_ impecable incluso durante picos de tráfico generados por campañas publicitarias.
-- **Desacoplamiento:** Al separar la lógica conversacional del CMS, el cliente ahora tiene un microservicio que puede reutilizar o escalar independientemente de su página web principal.
+- **Increased conversion:** The bot implementation significantly increased lead convergence (users who leave their data after interacting with the assistant).
+- **Guaranteed stability:** Thanks to the containerized architecture and Rate Limiting policies, the service maintains impeccable _uptime_ even during traffic spikes generated by advertising campaigns.
+- **Decoupling:** By separating conversational logic from the CMS, the client now has a microservice that can be reused or scaled independently of their main website.

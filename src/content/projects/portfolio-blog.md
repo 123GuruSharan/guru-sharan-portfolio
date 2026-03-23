@@ -1,6 +1,6 @@
 ---
 title: "Galería de arte"
-description: "Desarrollé una plataforma integral para artistas que permite la gestión completa de obras de arte. Implementé un sistema de autenticación segura (Login/Registro) y una arquitectura de base de datos para que los usuarios puedan subir y compartir sus creaciones."
+description: "I developed a comprehensive platform for artists that allows complete management of artworks. I implemented a secure authentication system (Login/Register) and a database architecture so users can upload and share their creations."
 image: "../../assets/images/galeria.png"
 projectUrl: "https://galeriairis.great-site.net/"
 technologies: ["Php", "JavaScript", "CSS"]

@@ -1,6 +1,6 @@
 ---
-title: "Cloud API RESTful - NestJS & AWS"
-description: "Diseño y desarrollo de una API segura con TypeScript y NestJS. Implementación de control de roles (RBAC) y un pipeline CI/CD completo con GitHub Actions y Docker para su despliegue automatizado en AWS EC2."
+title: "Cloud REST API - NestJS & AWS"
+description: "Design and development of a secure API with TypeScript and NestJS. Implementation of role-based access control (RBAC) and a complete CI/CD pipeline with GitHub Actions and Docker for automated deployment on AWS EC2."
 image: "../../assets/images/nestjs.png"
 projectUrl: "https://github.com/LugoDv/apirest-nestj-auth-roles"
 technologies: ["TypeScript", "NestJS", "AWS", "Docker", "PostgreSQL"]
@@ -10,31 +10,31 @@ order: 2
 icon: "code"
 ---
 
-# Arquitectura Backend Escalable y Despliegue Automatizado (CI/CD)
+# Scalable Backend Architecture and Automated Deployment (CI/CD)
 
-Una API RESTful empresarial construida desde cero con el ecosistema de Node.js, diseñada no solo para gestionar datos de forma segura, sino para demostrar un dominio completo de las prácticas modernas de DevOps y arquitecturas Cloud.
+A RESTful enterprise API built from scratch with the Node.js ecosystem, designed not only to securely manage data, but to demonstrate complete mastery of modern DevOps practices and Cloud architectures.
 
-## 🎯 El Reto
+## 🎯 The Challenge
 
-El objetivo principal de este proyecto era construir una base backend sólida que pudiera servir como plantilla para futuras aplicaciones escalables. El sistema necesitaba un tipado estricto, una capa de seguridad impenetrable mediante roles de usuario, y lo más importante: **eliminar por completo el trabajo manual de despliegue** llevando la aplicación a la nube de forma automatizada y sin fricciones.
+The main objective of this project was to build a solid backend foundation that could serve as a template for future scalable applications. The system needed strict typing, an impenetrable security layer through user roles, and most importantly: **completely eliminate manual deployment work** by taking the application to the cloud in an automated and frictionless way.
 
-## 💡 La Solución y Arquitectura
+## 💡 The Solution and Architecture
 
-Para lograr un entorno robusto y preparado para producción, dividí el proyecto en dos fases clave: el desarrollo del software y la ingeniería de la infraestructura.
+To achieve a robust and production-ready environment, I divided the project into two key phases: software development and infrastructure engineering.
 
-1. **Desarrollo Backend (NestJS):** Utilicé el framework NestJS por su arquitectura nativa basada en inyección de dependencias y modularidad. Implementé un sistema de autenticación por tokens (JWT) y construí Guards personalizados para restringir el acceso a los endpoints según el rol del usuario (ADMIN vs USER).
-2. **Contenerización (Docker):** Aislé la aplicación y su base de datos (PostgreSQL) utilizando `Dockerfile` y `docker-compose.yml`. Esto garantiza que el proyecto funcione de manera idéntica en cualquier máquina o servidor.
-3. **Pipeline CI/CD y Nube (AWS):** Diseñé un flujo de trabajo (workflow) en GitHub Actions que, ante cada nuevo `push` a la rama principal, construye automáticamente la imagen del contenedor y la despliega en una instancia de Amazon EC2.
+1. **Backend Development (NestJS):** I used the NestJS framework for its native dependency injection architecture and modularity. I implemented a token-based authentication system (JWT) and built custom Guards to restrict access to endpoints based on user role (ADMIN vs USER).
+2. **Containerization (Docker):** I isolated the application and its database (PostgreSQL) using `Dockerfile` and `docker-compose.yml`. This ensures the project works identically on any machine or server.
+3. **CI/CD Pipeline and Cloud (AWS):** I designed a workflow in GitHub Actions that, upon each new `push` to the main branch, automatically builds the container image and deploys it to an Amazon EC2 instance.
 
-## ⚙️ Aspectos Técnicos Destacados
+## ⚙️ Outstanding Technical Aspects
 
-- **TypeScript & TypeORM:** Código 100% tipado, utilizando TypeORM para la persistencia de datos relacionales, asegurando consultas seguras y migraciones estructuradas.
-- **Seguridad (AuthGuard & RolesGuard):** Protección perimetral de las rutas a través de decoradores personalizados (`@Roles()`), validando la firma del JWT en cada petición.
-- **Integración Continua (CI/CD):** Creación del archivo `main.yml` en GitHub Actions para orquestar la construcción y el despliegue automático hacia AWS, minimizando el riesgo de errores humanos en el servidor.
-- **Infraestructura como Código (IaC):** Todo el entorno de ejecución está documentado y versionado mediante Docker, lo que permite levantar toda la arquitectura en minutos.
+- **TypeScript & TypeORM:** 100% typed code, using TypeORM for relational data persistence, ensuring safe queries and structured migrations.
+- **Security (AuthGuard & RolesGuard):** Perimeter protection of routes through custom decorators (`@Roles()`), validating the JWT signature on each request.
+- **Continuous Integration (CI/CD):** Creation of the `main.yml` file in GitHub Actions to orchestrate automatic build and deployment to AWS, minimizing the risk of human errors on the server.
+- **Infrastructure as Code (IaC):** The entire runtime environment is documented and versioned through Docker, allowing the entire architecture to be deployed in minutes.
 
-## 📈 Resultados e Impacto
+## 📈 Results and Impact
 
-- **Despliegues con Cero Fricción:** El equipo (o el desarrollador) puede enfocarse 100% en escribir código; al hacer un _merge_, la plataforma se actualiza sola en producción en cuestión de minutos.
-- **Arquitectura Enterprise:** Al seguir los principios SOLID y la estructura modular de NestJS, el código base está preparado para escalar, permitiendo agregar nuevos módulos y microservicios sin romper la funcionalidad existente.
-- **Documentación Integral:** Se elaboró una guía técnica detallada (`CI-CD-GUIDE.md`) que sirve como manual operativo para cualquier desarrollador que se una al proyecto, estandarizando el proceso de autenticación y despliegue.
+- **Frictionless Deployments:** The team (or developer) can focus 100% on writing code; upon merging, the platform updates itself in production in a matter of minutes.
+- **Enterprise Architecture:** By following SOLID principles and NestJS's modular structure, the codebase is ready to scale, allowing new modules and microservices to be added without breaking existing functionality.
+- **Comprehensive Documentation:** A detailed technical guide (`CI-CD-GUIDE.md`) was created that serves as an operational manual for any developer joining the project, standardizing the authentication and deployment process.
