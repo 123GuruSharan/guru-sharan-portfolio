@@ -92,10 +92,16 @@
 </section>
 
 <style>
+  .timeline-line {
+    background: linear-gradient(180deg, #60A5FA, #8B5CF6, #F43F5E);
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.35);
+  }
+
   .timeline-item {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.6s ease-out;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: auto;
   }
 
   .timeline-item.visible {
@@ -103,55 +109,97 @@
     transform: translateY(0);
   }
 
-  .timeline-card:hover {
-    box-shadow: 0 10px 30px rgba(255, 165, 0, 0.2);
+  .timeline-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    cursor: pointer;
   }
 
-  .timeline-card:nth-child(2):hover {
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+  .timeline-card:hover {
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 10px 35px rgba(255, 100, 100, 0.25);
+    border: 1px solid rgba(255, 100, 100, 0.35);
   }
 
   .timeline-node {
-    animation: pulse 2s infinite;
+    animation: pulse-red 2.4s ease-in-out infinite;
+    width: 18px;
+    height: 18px;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  @keyframes pulse {
-    0%, 100% {
-      box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7);
-    }
-    50% {
-      box-shadow: 0 0 0 10px rgba(255, 165, 0, 0);
-    }
+  .timeline-node:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 18px rgba(239, 68, 68, 0.9), 0 0 30px rgba(220, 38, 38, 0.45);
   }
 
-  .timeline-node:nth-child(2) {
-    animation: pulse-cyan 2s infinite;
+  @keyframes pulse-red {
+    0%, 100% { box-shadow: 0 0 10px rgba(239, 68, 68, 0.7); }
+    50% { box-shadow: 0 0 18px rgba(239, 68, 68, 0.35); }
   }
 
-  @keyframes pulse-cyan {
-    0%, 100% {
-      box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7);
-    }
-    50% {
-      box-shadow: 0 0 0 10px rgba(0, 255, 255, 0);
-    }
+  .timeline-date {
+    cursor: default;
+  }
+
+  .timeline-card h3,
+  .timeline-card h4 {
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+  }
+
+  .timeline-card h3:hover,
+  .timeline-card h4:hover {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+  }
+
+  .timeline-card ul li {
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .timeline-card ul li:hover {
+    transform: translateX(5px);
+    color: #ffffff;
+  }
+
+  .timeline-card ul li span {
+    color: #93c5fd;
+  }
+
+  .timeline-card ul li:hover span {
+    color: #fff;
   }
 
   @media (max-width: 768px) {
     .timeline-line {
       left: 20px;
+      width: 4px;
+      box-shadow: 0 0 8px rgba(99, 102, 241, 0.25);
     }
     .timeline-node {
       left: 20px;
       transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
     }
-    .timeline-content {
-      width: calc(100% - 40px);
+    .timeline-card {
       margin-left: 40px;
+      width: calc(100% - 60px);
+      transform: none;
     }
-    .timeline-item {
-      flex-direction: column;
-      align-items: flex-start;
+    .timeline-card:hover {
+      transform: none;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    }
+    .timeline-card ul li:hover {
+      transform: translateX(3px);
     }
   }
 </style>
