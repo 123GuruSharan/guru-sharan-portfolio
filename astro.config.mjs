@@ -9,6 +9,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: "https://lugotech.dev",
+  site: "https://gurusharan.dev",
   integrations: [sitemap()],
 });
