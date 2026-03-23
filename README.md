@@ -1,45 +1,49 @@
-# 🚀 Lugotech.dev | Portfolio Personal
+# 🚀 GuruSharan.dev | Personal Portfolio
 
-¡Bienvenido al repositorio de mi portfolio profesional! Este proyecto es el resultado de mi transición de las telecomunicaciones al desarrollo **Full-Stack**, enfocado en crear experiencias web rápidas, accesibles y con un diseño impecable.
+Welcome to my personal portfolio repository. This project showcases my journey as a Full Stack Developer, highlighting my projects, skills, and experience in building scalable web applications.
 
-Este sitio no es solo una carta de presentación, sino un campo de pruebas donde implemento las últimas tecnologías de desarrollo moderno.
+## 📋 Description
 
-## Tech Stack
+This portfolio is designed to demonstrate my ability to build modern, responsive, and user-friendly web applications using current technologies.
 
-- **Framework:** [Astro](https://astro.build/) (Static Site Generation)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Animations:** [Tailwind Merge / Native CSS]
-- **Deployment:** [Cloudflare Pages](https://pages.cloudflare.com/)
-- **SEO:** Sitemap dinámico y optimización de robots.txt
+## 🛠️ Tech Stack
 
-## Características Principales
+### Frontend
+- HTML, CSS, JavaScript, React.js
 
-- **Velocidad Extrema:** Gracias a la arquitectura de "islas" de Astro, el sitio carga casi instantáneamente.
-- **Diseño Responsive:** Optimizado para dispositivos móviles, tablets y escritorio.
-- **Dark Mode:** Estética moderna con acentos naranjas y azules profundos.
-- **SEO Ready:** Sitemap indexado automáticamente y metadatos optimizados para motores de búsqueda.
-- **Toolbox Técnico:** Sección dedicada que muestra mi stack (Java, PHP, React, Docker, etc.).
+### Backend
+- Node.js, Express.js
 
-## Instalación y Desarrollo
+### Database
+- MongoDB, MySQL
 
-Si quieres echar un vistazo al código o correrlo localmente:
+### Tools
+- Git, GitHub
 
-1. **Clona el repositorio:**
-   ```bash
-   git clone [https://github.com/tu-usuario/lugotech-portfolio.git](https://github.com/tu-usuario/lugotech-portfolio.git)
-   ```
-2. **Instala las dependencias:**
-   ```bash
-   cd lugotech-portfolio
-   npm install
-   ```
-3. **Corre el servidor de desarrollo:**
-   ```bash
-   npm run dev
-   ```
+## 🎯 Project Highlights
 
-## ⚖️ Licencia
+- **Swigato** – Food Delivery Platform (Full Stack)
+- **Bookstore Website** – Dynamic e-commerce platform
+- **Airport Lost & Found System** – Real-time tracking application
 
-Este proyecto está bajo la Licencia MIT. Siéntete libre de usar el código como referencia, pero se agradecen los créditos si utilizas partes significativas del diseño o la lógica.
+## ✨ Features
 
-Consulta el archivo [LICENSE](./LICENSE) para más detalles.
+- **Responsive Design** – Optimized for all devices
+- **Smooth Animations** – Modern CSS animations and transitions
+- **Interactive UI** – Engaging user interactions
+- **Modern Dark Theme** – Professional aesthetic with neon accents
+
+## 🚀 Deployment
+
+**Live Demo:** Coming Soon
+
+## 👨‍💻 Author
+
+**Guru Sharan Kumar Priye**
+
+- **GitHub:** [https://github.com/123GuruSharan](https://github.com/123GuruSharan)
+- **LinkedIn:** [https://linkedin.com/in/guru-sharan-kumar-priye](https://linkedin.com/in/guru-sharan-kumar-priye)
+
+---
+
+*Built with ❤️ using Astro and Tailwind CSS*
