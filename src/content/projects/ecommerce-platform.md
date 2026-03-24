@@ -1,9 +1,9 @@
 ---
-title: "GlobalLeaders USA"
-description: "I developed a comprehensive solution that includes the chat layout, conversational logic in Python and its integration as a plugin. I implemented a multi-language system and handled professional deployment through Docker on the client's server, ensuring a stable and scalable environment."
+title: "Swigato – Food Delivery Platform"
+description: "I developed a full-stack food delivery platform that supports real-time order tracking, dynamic user interactions, and scalable backend architecture. The system is designed to efficiently handle multiple users, optimize performance, and ensure smooth user experience across devices."
 image: "../../assets/images/global-leaders.png"
 projectUrl: "https://regalexia.com/trabaja-campamento-verano-eeuu-global-leaders-usa/"
-technologies: ["Python", "FastAPI", "PHP", "Docker"]
+technologies: ["React", "Node.js", "Express.js", "MongoDB"]
 featured: true
 publishedDate: 2025-10-20
 order: 1

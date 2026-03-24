@@ -1,9 +1,9 @@
 ---
-title: "Cloud REST API - NestJS & AWS"
-description: "Design and development of a secure API with TypeScript and NestJS. Implementation of role-based access control (RBAC) and a complete CI/CD pipeline with GitHub Actions and Docker for automated deployment on AWS EC2."
+title: "Bookstore Web Application"
+description: "I built an interactive bookstore web application with advanced search, filtering, and rating features. The platform focuses on clean UI/UX design and responsiveness, allowing users to easily browse, explore, and discover books in an intuitive way."
 image: "../../assets/images/nestjs.png"
 projectUrl: "https://github.com/LugoDv/apirest-nestj-auth-roles"
-technologies: ["TypeScript", "NestJS", "AWS", "Docker", "PostgreSQL"]
+technologies: ["HTML", "CSS", "JavaScript"]
 featured: true
 publishedDate: 2026-02-20
 order: 2

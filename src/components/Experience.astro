@@ -2,71 +2,81 @@
 // Experience component for portfolio
 ---
 
-import { BsPersonWorkspace } from 'react-icons/bs';
-import { Calendar } from 'lucide-react';
+<!-- // using inline SVGs for icons to avoid external runtime imports -->
 
-<section id="experience" class="experience-section py-20" style="background: radial-gradient(circle at center, #0f172a, #020617);">
+
+<section id="experience" class="experience-section py-20">
   <div class="container mx-auto px-4">
-    <h2 class="text-center text-4xl font-bold text-Text-light mb-16">Professional Journey</h2>
+    <h2 class="journey-title text-center mb-16">
+      <span>Professional Journey</span>
+    </h2>
 
-    <div class="timeline relative max-w-4xl mx-auto">
+    <div class="timeline relative max-w-7xl mx-auto">
       <!-- Timeline Line -->
       <div class="timeline-line absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-400 to-blue-600 h-full rounded-full"></div>
 
       <!-- Experience Item 1 - Left -->
-      <div class="timeline-item relative mb-12">
-        <div class="timeline-date absolute left-1/2 -translate-x-1/2 top-12 z-10">
-          <div class="bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-slate-400 text-sm font-medium">
-            <Calendar className="w-4 h-4 text-blue-400" />
+      <div class="timeline-item timeline-item-left relative mb-12">
+        <div class="timeline-date">
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-slate-300 text-sm font-medium whitespace-nowrap">
+            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
             Jan 2026 – Mar 2026
           </div>
         </div>
-        <div class="timeline-node absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 w-12 h-12 rounded-xl bg-[#050505] border border-blue-400/40 flex items-center justify-center z-10 shadow-[0_0_20px_rgba(59,130,246,0.5)]">
-          <BsPersonWorkspace className="text-blue-400 w-5 h-5" />
+        <div class="timeline-node absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 w-12 h-12 rounded-xl bg-[#050505] border border-white/15 flex items-center justify-center z-10">
+          <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 7l-8-4-8 4v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7z"/>
+          </svg>
         </div>
         <div class="flex items-center">
-          <div class="timeline-content w-full md:w-[55%] md:pr-8 text-right mr-14">
-            <div class="timeline-card bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-xl p-10 shadow-lg hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all duration-300 hover:-translate-y-1">
+          <div class="timeline-content w-full md:w-[62%] md:pr-12 text-left mr-16">
+            <div class="timeline-card bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-xl p-10 shadow-lg hover:shadow-[0_0_18px_rgba(251,146,60,0.35)] transition-all duration-300 hover:-translate-y-1">
               <h3 class="text-2xl font-bold text-Text-light mb-2">Full Stack Developer Intern</h3>
               <h4 class="text-lg text-blue-400 font-medium mb-4">Happieloop Technologies</h4>
               <ul class="text-Text-light/80 text-sm lg:text-[15px] space-y-2">
-                <li class="flex items-start justify-end">
+                <li class="flex items-start">
                   Developed responsive web applications using HTML, CSS, and JavaScript
                 </li>
-                <li class="flex items-start justify-end">
+                <li class="flex items-start">
                   Built scalable backend APIs using Node.js and Express.js
                 </li>
-                <li class="flex items-start justify-end">
+                <li class="flex items-start">
                   Designed and managed MongoDB databases for real-time applications
                 </li>
-                <li class="flex items-start justify-end">
+                <li class="flex items-start">
                   Integrated REST APIs and implemented real-time features using WebSocket
                 </li>
-                <li class="flex items-start justify-end">
+                <li class="flex items-start">
                   Improved application performance, debugging, and reliability
                 </li>
               </ul>
             </div>
           </div>
-          <div class="hidden md:block w-[45%]"></div>
+          <div class="hidden md:block w-[38%]"></div>
         </div>
       </div>
 
       <!-- Experience Item 2 - Right -->
-      <div class="timeline-item relative mb-12">
-        <div class="timeline-date absolute left-1/2 -translate-x-1/2 top-12 z-10">
-          <div class="bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-slate-400 text-sm font-medium">
-            <Calendar className="w-4 h-4 text-blue-400" />
-            2025 – Present
+      <div class="timeline-item timeline-item-right relative mb-12">
+        <div class="timeline-date">
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-slate-300 text-sm font-medium whitespace-nowrap">
+            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            Feb 2026 - Present
           </div>
         </div>
-        <div class="timeline-node absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 w-12 h-12 rounded-xl bg-[#050505] border border-blue-400/40 flex items-center justify-center z-10 shadow-[0_0_20px_rgba(59,130,246,0.5)]">
-          <BsPersonWorkspace className="text-blue-400 w-5 h-5" />
+        <div class="timeline-node absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 w-12 h-12 rounded-xl bg-[#050505] border border-white/15 flex items-center justify-center z-10">
+          <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 7l-8-4-8 4v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7z"/>
+          </svg>
         </div>
         <div class="flex items-center">
-          <div class="hidden md:block w-[45%]"></div>
-          <div class="timeline-content w-full md:w-[55%] md:pl-8 ml-14">
-            <div class="timeline-card bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-xl p-10 shadow-lg hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all duration-300 hover:-translate-y-1">
+          <div class="hidden md:block w-[38%]"></div>
+          <div class="timeline-content w-full md:w-[62%] md:pl-12 ml-16">
+            <div class="timeline-card timeline-card-right bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-xl p-10 shadow-lg hover:shadow-[0_0_18px_rgba(251,146,60,0.35)] transition-all duration-300 hover:-translate-y-1">
               <h3 class="text-2xl font-bold text-Text-light mb-2">Software Development Intern</h3>
               <h4 class="text-lg text-blue-400 font-medium mb-4">Infosys Springboard</h4>
               <ul class="text-Text-light/80 text-sm lg:text-[15px] space-y-3">
@@ -98,6 +108,76 @@ import { Calendar } from 'lucide-react';
 </section>
 
 <style>
+  .experience-section {
+    background: transparent;
+  }
+
+  .journey-title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+
+  .journey-title::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, rgba(251,146,60,0.65), transparent);
+    transform: translateY(-50%);
+    z-index: 0;
+  }
+
+  .journey-title span {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: 14px 42px;
+    border-radius: 999px;
+    background: #050505;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow:
+      0 0 18px rgba(2, 6, 23, 0.45),
+      0 0 26px rgba(251, 146, 60, 0.24);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 3.2vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.18);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, text-shadow 0.35s ease;
+  }
+
+  .journey-title span::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 999px;
+    z-index: -1;
+    background: radial-gradient(circle, rgba(251,146,60,0.28) 0%, rgba(251,146,60,0) 70%);
+    filter: blur(8px);
+    pointer-events: none;
+    opacity: 0.7;
+    transition: opacity 0.35s ease, filter 0.35s ease;
+  }
+
+  .journey-title:hover span {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow:
+      0 0 18px rgba(2, 6, 23, 0.45),
+      0 0 36px rgba(251, 146, 60, 0.36);
+    text-shadow: 0 0 14px rgba(255, 255, 255, 0.3);
+  }
+
+  .journey-title:hover span::after {
+    opacity: 1;
+    filter: blur(11px);
+  }
+
   .timeline-line {
     background: linear-gradient(to bottom, #3b82f6, #60a5fa);
     box-shadow: 0 0 10px rgba(59,130,246,0.4);
@@ -109,6 +189,7 @@ import { Calendar } from 'lucide-react';
     transform: translateY(30px);
     transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: auto;
+    padding-top: 72px;
   }
 
   .timeline-item.visible {
@@ -124,28 +205,47 @@ import { Calendar } from 'lucide-react';
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    max-width: 500px;
-    width: 100%;
+    max-width: 2060px;
+    width: 120%;
     padding: 40px;
+    margin-left: -10%;
+    margin-right: 30%;
   }
 
   .timeline-card:hover {
     transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 0 25px rgba(59,130,246,0.4);
+    box-shadow:
+      0 0 32px rgba(251,146,60,0.34),
+      0 14px 34px rgba(0,0,0,0.45);
+    border-color: rgba(251,146,60,0.45);
+  }
+
+  /* Bottom (right) card only: prevent center-line overlap */
+  .timeline-item-right .timeline-card-right {
+    margin-left: 56px;
   }
 
   .timeline-date {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 48px;
+    top: 50%;
     border-radius: 999px;
-    padding: 8px 16px;
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
     font-size: 14px;
     color: #94a3b8;
-    z-index: 1;
+    z-index: 20;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transform: translateY(-50%);
+  }
+
+  /* Place date badge opposite to the card side on desktop */
+  .timeline-item-left .timeline-date {
+    left: calc(50% + 48px);
+  }
+
+  .timeline-item-right .timeline-date {
+    left: auto;
+    right: calc(50% + 48px);
   }
 
   .timeline-date::before {
@@ -160,6 +260,30 @@ import { Calendar } from 'lucide-react';
     border-radius: 50%;
     box-shadow: 0 0 10px #3b82f6;
     z-index: -1;
+  }
+
+  .timeline-item:hover .timeline-date {
+    transform: translateY(calc(-50% - 2px));
+    box-shadow: 0 0 18px rgba(59,130,246,0.22);
+  }
+
+  @media (min-width: 769px) {
+    /* Keep cards wide but preserve a fixed center lane */
+    .timeline-item-left .timeline-content,
+    .timeline-item-right .timeline-content {
+      width: calc(50% - 76px) !important;
+      max-width: calc(50% - 76px);
+    }
+
+    .timeline-item-left .timeline-content {
+      margin-right: 76px !important;
+      padding-right: 0 !important;
+    }
+
+    .timeline-item-right .timeline-content {
+      margin-left: 76px !important;
+      padding-left: 0 !important;
+    }
   }
 
   .timeline-card h3 {
@@ -203,6 +327,20 @@ import { Calendar } from 'lucide-react';
   }
 
   @media (max-width: 768px) {
+    .journey-title {
+      margin-bottom: 48px;
+    }
+
+    .journey-title::before {
+      left: 0;
+      right: 0;
+    }
+
+    .journey-title span {
+      padding: 12px 26px;
+      font-size: clamp(1.4rem, 6vw, 2rem);
+    }
+
     .timeline-line {
       left: 16px;
       width: 4px;
@@ -224,8 +362,9 @@ import { Calendar } from 'lucide-react';
     }
     .timeline-date {
       left: 16px;
+      right: auto;
       transform: translateX(0);
-      top: 48px;
+      top: 10px;
     }
     .timeline-date::before {
       left: 50%;

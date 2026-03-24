@@ -1,9 +1,9 @@
 ---
-title: "Beauty API"
-description: "Development of a monolithic backend in Java 17 for comprehensive beauty salon management. Implements a booking engine, advanced security with Spring Security (JWT/RBAC) and interactive endpoint documentation."
+title: "Airport Lost & Found System"
+description: "I developed a backend-driven system to manage lost and found items at airports using C++ and the Crow framework. The system handles efficient request processing and provides a structured way to track, manage, and retrieve lost items."
 image: "../../assets/images/beauty-api.png"
 projectUrl: "https://github.com/LugoDv/beauty-api"
-technologies: ["Java 17", "Spring Boot", "MySQL", "JWT", "Swagger"]
+technologies: ["C++", "Crow", "REST API"]
 featured: true
 publishedDate: 2025-01-10
 order: 3
