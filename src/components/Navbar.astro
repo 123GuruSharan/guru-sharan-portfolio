@@ -85,30 +85,51 @@ import ToggleGrid from "./ToggleGrid.astro";
         </li>
         <li>
           <a
-            href="#skills"
+            href="/#education"
+            class="block px-3 py-2 rounded text-heading hover:bg-neutral-tertiary md:bg-transparent md:hover:text-Orange-vibrant md:p-0"
+            >Education</a
+          >
+        </li>
+        <li>
+          <a
+            href="/#skills"
             class="block px-3 py-2 rounded text-heading hover:bg-neutral-tertiary md:bg-transparent md:hover:text-Orange-vibrant md:p-0"
             >Skills</a
           >
         </li>
         <li>
           <a
-            href="#experience"
+            href="/#experience"
             class="block px-3 py-2 rounded text-heading hover:bg-neutral-tertiary md:bg-transparent md:hover:text-Orange-vibrant md:p-0"
             >Experience</a
           >
         </li>
         <li>
           <a
-            href="#about"
+            href="/#about"
             class="block px-3 py-2 rounded text-heading hover:bg-neutral-tertiary md:bg-transparent md:hover:text-Orange-vibrant md:p-0"
             >About</a
           >
         </li>
         <li>
           <a
-            href="#projects"
+            href="/#projects"
             class="block px-3 py-2 rounded text-heading hover:bg-neutral-tertiary md:bg-transparent md:hover:text-Orange-vibrant md:p-0"
             >Projects</a
+          >
+        </li>
+        <li>
+          <a
+            href="/#certificates"
+            class="block px-3 py-2 rounded text-heading hover:bg-neutral-tertiary md:bg-transparent md:hover:text-Orange-vibrant md:p-0"
+            >Certificates</a
+          >
+        </li>
+        <li>
+          <a
+            href="/resume"
+            class="block px-3 py-2 rounded text-heading hover:bg-neutral-tertiary md:bg-transparent md:hover:text-Orange-vibrant md:p-0"
+            >Resume</a
           >
         </li>
         <!-- <li>
@@ -127,7 +148,7 @@ import ToggleGrid from "./ToggleGrid.astro";
         </li> -->
         <li>
           <a
-            href="#contact  "
+            href="/#contact"
             class="block px-3 py-2 rounded text-heading hover:bg-neutral-tertiary md:bg-transparent md:hover:text-Orange-vibrant md:p-0"
             >Contact</a
           >
@@ -249,11 +270,21 @@ import ToggleGrid from "./ToggleGrid.astro";
       }
 
       // ===== SMOOTH SCROLLING =====
-      // Add smooth scrolling to all anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      // Same-page section links: #foo or /#foo when already on home
+      document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href') || '';
+          const hash = href.startsWith('/#')
+            ? href.slice(1)
+            : href.startsWith('#')
+              ? href
+              : '';
+          if (!hash) return;
+          if (href.startsWith('/#') && window.location.pathname !== '/') {
+            return; // let browser navigate to /#section
+          }
           e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
+          const target = document.querySelector(hash);
           if (target) {
             target.scrollIntoView({
               behavior: 'smooth',
@@ -264,32 +295,73 @@ import ToggleGrid from "./ToggleGrid.astro";
       });
 
       // ===== ACTIVE LINK HIGHLIGHTING =====
-      const navLinks = document.querySelectorAll('nav a[href^="#"]');
+      const allNavInMenu = document.querySelectorAll('#navbar-default ul a');
+      const homeLink = document.querySelector('nav a[href="/"]');
+      const resumeLink = document.querySelector('nav a[href="/resume"]');
       const sections = document.querySelectorAll('section[id]');
 
+      function clearActiveNav() {
+        allNavInMenu.forEach((link) => link.classList.remove('active'));
+      }
+
       function highlightNavLink() {
-        const scrollY = window.pageYOffset;
+        if (window.location.pathname === '/resume') {
+          clearActiveNav();
+          resumeLink?.classList.add('active');
+          return;
+        }
 
-        sections.forEach(section => {
-          const sectionHeight = section.offsetHeight;
-          const sectionTop = section.offsetTop - 100; // Offset for navbar height
+        if (window.location.pathname !== '/') {
+          clearActiveNav();
+          return;
+        }
+
+        const scrollY = window.scrollY || window.pageYOffset;
+        const heroEl = document.getElementById('hero');
+        const heroEnd = heroEl
+          ? heroEl.offsetTop + heroEl.offsetHeight - 120
+          : 400;
+
+        if (scrollY < heroEnd) {
+          clearActiveNav();
+          homeLink?.classList.add('active');
+          return;
+        }
+
+        let activeLink = null;
+        sections.forEach((section) => {
           const sectionId = section.getAttribute('id');
-          const correspondingLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+          if (!sectionId || sectionId === 'hero') return;
+          const sectionTop = section.offsetTop - 100;
+          const sectionBottom = sectionTop + section.offsetHeight;
+          if (scrollY > sectionTop && scrollY <= sectionBottom) {
+            const link = document.querySelector(
+              `nav a[href="/#${sectionId}"]`
+            );
+            if (link) activeLink = link;
+          }
+        });
 
-          if (correspondingLink) {
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-              navLinks.forEach(link => link.classList.remove('active'));
-              correspondingLink.classList.add('active');
-            }
+        clearActiveNav();
+        if (activeLink) {
+          activeLink.classList.add('active');
+        } else {
+          homeLink?.classList.add('active');
+        }
+      }
+
+      highlightNavLink();
+
+      window.addEventListener('scroll', highlightNavLink, { passive: true });
+
+      if (window.location.pathname === '/' && window.location.hash) {
+        requestAnimationFrame(() => {
+          const el = document.querySelector(window.location.hash);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         });
       }
-
-      // Initial check
-      highlightNavLink();
-
-      // Listen for scroll events
-      window.addEventListener('scroll', highlightNavLink);
     }
 
     // Ejecutar en la carga inicial

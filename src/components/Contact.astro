@@ -1,27 +1,33 @@
 ---
-import Button from "./Button.astro";
 import IconsTecnology from "./IconsTecnology.astro";
 import LinkedInIcon from "./LinkedInIcon.astro";
 
-const ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+const EMAIL = "gurusharan4666@gmail.com";
+const GITHUB_URL = "https://github.com/123GuruSharan";
+const LINKEDIN_URL = "https://linkedin.com/in/guru-sharan-kumar-priye";
+/** Resume viewer page */
+const RESUME_URL = "/resume";
 ---
 
-<section id="contact" data-astro-rerun-on-hydrate>
+<section id="contact" class="scroll-mt-[100px]" data-astro-rerun-on-hydrate>
   <div class="container contenedor-revelar mx-auto px-4 py-20 text-center">
-    <h2 class="text-4xl font-bold mb-4 dark:text-white">Get in Touch</h2>
-    <p class="font-medium text-lg text-body dark:text-body-light mb-8">
-      Do you have a project in mind or just want to say hello? I'd love to hear
-      from you!
+    <h2 class="text-3xl sm:text-4xl font-bold mb-4 dark:text-white max-w-3xl mx-auto leading-tight">
+      Let's Build Something Great Together 🚀
+    </h2>
+    <p
+      class="font-medium text-base sm:text-lg text-body dark:text-body-light mb-10 max-w-2xl mx-auto"
+    >
+      I'm open to internships, freelance work, and collaborations. Let's connect!
     </p>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-      <!-- Formulario e Información en una sola isla -->
+      <!-- Form -->
       <div
         class="item-revelar contact-form bg-neutral-primary-soft border border-Border dark:border-Border-dark rounded-base shadow-xs p-8"
       >
         <div class="flex items-center align-middle gap-4 mb-6">
           <svg
-            class="w-8 h-8 text-Orange-vibrant dark:text-Orange-vibrant-dark"
+            class="w-8 h-8 text-Orange-vibrant dark:text-Orange-vibrant-dark shrink-0"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -39,9 +45,32 @@ const ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
             Send message
           </h3>
         </div>
-        <form id="conctact-form" class="space-y-6 text-left" method="POST">
-          <input type="hidden" name="access_key" value={ACCESS_KEY} />
 
+        <div
+          class="flex flex-wrap gap-2 sm:gap-3 mb-8 justify-start"
+        >
+          <a href={RESUME_URL} class="contact-quick-btn">
+            View Resume
+          </a>
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-quick-btn"
+          >
+            GitHub
+          </a>
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-quick-btn"
+          >
+            LinkedIn
+          </a>
+        </div>
+
+        <form id="contact-form" class="space-y-6 text-left" method="POST">
           <div>
             <label
               for="name"
@@ -53,7 +82,7 @@ const ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
               type="text"
               id="name"
               name="name"
-              class="bg-Background-light dark:bg-Background-dark border border-Border dark:border-Border-dark text-Text-dark dark:text-Text-light text-sm rounded-base focus:ring-2 focus:ring-Orange-vibrant focus:border-Orange-vibrant block w-full px-4 py-3 shadow-xs placeholder:text-body dark:placeholder:text-body-light"
+              class="contact-input bg-Background-light dark:bg-Background-dark border border-Border dark:border-Border-dark text-Text-dark dark:text-Text-light text-sm rounded-base block w-full px-4 py-3 shadow-xs placeholder:text-body dark:placeholder:text-body-light"
               placeholder="Your name"
               required
             />
@@ -70,7 +99,7 @@ const ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
               type="email"
               id="email"
               name="email"
-              class="bg-Background-light dark:bg-Background-dark border border-Border dark:border-Border-dark text-Text-dark dark:text-Text-light text-sm rounded-base focus:ring-2 focus:ring-Orange-vibrant focus:border-Orange-vibrant block w-full px-4 py-3 shadow-xs placeholder:text-body dark:placeholder:text-body-light"
+              class="contact-input bg-Background-light dark:bg-Background-dark border border-Border dark:border-Border-dark text-Text-dark dark:text-Text-light text-sm rounded-base block w-full px-4 py-3 shadow-xs placeholder:text-body dark:placeholder:text-body-light"
               placeholder="your.email@example.com"
               required
             />
@@ -87,26 +116,25 @@ const ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
               id="message"
               name="message"
               rows="5"
-              class="bg-Background-light dark:bg-Background-dark border border-Border dark:border-Border-dark text-Text-dark dark:text-Text-light text-sm rounded-base focus:ring-2 focus:ring-Orange-vibrant focus:border-Orange-vibrant block w-full px-4 py-3 shadow-xs placeholder:text-body dark:placeholder:text-body-light resize-none"
+              class="contact-input bg-Background-light dark:bg-Background-dark border border-Border dark:border-Border-dark text-Text-dark dark:text-Text-light text-sm rounded-base block w-full px-4 py-3 shadow-xs placeholder:text-body dark:placeholder:text-body-light resize-none"
               placeholder="Write your message here..."
               required></textarea>
           </div>
 
-          <!-- Mensaje de resultado -->
           <div id="result" class="text-sm font-medium hidden"></div>
 
           <button
             type="submit"
             id="submit-btn"
-            class="px-8 py-4 font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl inline-flex items-center cursor-pointer justify-center gap-2 bg-Orange-vibrant dark:bg-Orange-vibrant-dark hover:bg-Orange-vibrant/90 w-full disabled:opacity-50 disabled:cursor-not-allowed"
+            class="contact-submit-btn px-8 py-4 font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 hover:scale-105 inline-flex items-center cursor-pointer justify-center gap-2 bg-Orange-vibrant dark:bg-Orange-vibrant-dark hover:bg-Orange-vibrant/90 w-full disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
-            <span id="btn-text">Send</span>
+            <span id="btn-text">Send Message 🚀</span>
             <span id="btn-loading" class="hidden">Sending...</span>
           </button>
         </form>
       </div>
 
-      <!-- Información de Contacto en una sola isla -->
+      <!-- Contact info -->
       <div
         class="item-revelar contact-info bg-neutral-primary-soft border border-Border dark:border-Border-dark rounded-base shadow-xs p-8 space-y-6 text-left"
       >
@@ -114,7 +142,6 @@ const ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
           Contact Information
         </h3>
 
-        <!-- Email -->
         <div
           class="flex items-start gap-4 pb-4 border-b border-Border dark:border-Border-dark"
         >
@@ -140,49 +167,17 @@ const ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
               Email
             </h4>
             <a
-              href="mailto:falugopersonal@gmail.com"
-              class="text-body w-auto text-sm dark:text-body-light hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark transition-colors"
+              href={`mailto:${EMAIL}`}
+              class="text-body w-auto text-sm dark:text-body-light hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark transition-colors break-all"
             >
-              Hablemos
+              {EMAIL}
             </a>
+            <p class="text-xs text-body dark:text-body-light/90 mt-1">
+              Let's talk
+            </p>
           </div>
         </div>
 
-        <!-- Phone -->
-        <!-- <div
-          class="flex items-start gap-4 pb-4 border-b border-Border dark:border-Border-dark"
-        >
-          <div
-            class="bg-Orange-vibrant/10 dark:bg-Orange-vibrant-dark/10 p-3 rounded-base shrink-0"
-          >
-            <svg
-              class="w-6 h-6 text-Orange-vibrant dark:text-Orange-vibrant-dark"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-              ></path>
-            </svg>
-          </div>
-          <div>
-            <h4 class="font-bold text-Text-dark dark:text-Text-light mb-1">
-              Phone
-            </h4>
-            <a
-              href="tel:+1234567890"
-              class="text-body dark:text-body-light hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark transition-colors"
-            >
-              +1 (234) 567-890
-            </a>
-          </div>
-        </div> -->
-
-        <!-- Location -->
         <div
           class="flex items-start gap-4 pb-4 border-b border-Border dark:border-Border-dark"
         >
@@ -210,32 +205,66 @@ const ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
           </div>
           <div>
             <h4 class="font-bold text-Text-dark dark:text-Text-light mb-1">
-              Ubicación
+              Location
             </h4>
-            <p class="text-body text-sm dark:text-body-light">
-              Barcelona<br />España
+            <p class="text-body text-sm dark:text-body-light">India</p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-start gap-4 pb-4 border-b border-Border dark:border-Border-dark"
+        >
+          <div
+            class="bg-green-500/10 dark:bg-green-500/15 p-3 rounded-base shrink-0"
+          >
+            <svg
+              class="w-6 h-6 text-green-600 dark:text-green-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-Text-dark dark:text-Text-light mb-1">
+              Availability
+            </h4>
+            <p
+              class="text-sm text-body dark:text-body-light flex flex-wrap items-center gap-2"
+            >
+              <span
+                class="inline-flex h-2.5 w-2.5 shrink-0 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.85)]"
+                aria-hidden="true"
+              ></span>
+              Available for opportunities
             </p>
           </div>
         </div>
 
-        <!-- Social -->
         <div>
           <h4 class="font-bold text-Text-dark dark:text-Text-light mb-3">
-            Conéctate conmigo
+            Connect with me
           </h4>
           <div class="flex gap-4">
             <a
-              href="https://github.com/LuGoDv"
+              href={GITHUB_URL}
               target="_blank"
-              class="text-Text-dark dark:text-Text-light hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark transition-colors"
+              rel="noopener noreferrer"
+              class="contact-social-link text-Text-dark dark:text-Text-light"
               aria-label="GitHub"
             >
               <IconsTecnology name="Github" size={24} />
             </a>
             <a
-              href="https://www.linkedin.com/in/fabian-lugo-/"
+              href={LINKEDIN_URL}
               target="_blank"
-              class="text-Text-dark dark:text-Text-light hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark transition-colors"
+              rel="noopener noreferrer"
+              class="contact-social-link text-Text-dark dark:text-Text-light"
               aria-label="LinkedIn"
             >
               <LinkedInIcon size={24} />
@@ -246,70 +275,205 @@ const ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
     </div>
   </div>
 
+  <style>
+    .contact-quick-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      border: 1px solid var(--color-Border);
+      background: var(--color-Background-light);
+      color: var(--color-Text-dark);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        background-color 0.25s ease;
+    }
+
+    .dark .contact-quick-btn {
+      border-color: var(--color-Border-dark);
+      background: var(--color-Background-dark);
+      color: var(--color-Text-light);
+    }
+
+    .contact-quick-btn:hover {
+      transform: translateY(-1px) scale(1.02);
+      border-color: var(--color-Orange-vibrant);
+      box-shadow:
+        0 0 20px rgba(251, 146, 60, 0.35),
+        0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    .dark .contact-quick-btn:hover {
+      border-color: var(--color-Orange-vibrant-dark);
+      box-shadow:
+        0 0 22px rgba(251, 146, 60, 0.28),
+        0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    .contact-input {
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .contact-input:focus {
+      outline: none;
+      border-color: var(--color-Orange-vibrant);
+      box-shadow:
+        0 0 0 3px rgba(251, 146, 60, 0.22),
+        0 0 18px rgba(251, 146, 60, 0.15);
+    }
+
+    .dark .contact-input:focus {
+      border-color: var(--color-Orange-vibrant-dark);
+      box-shadow:
+        0 0 0 3px rgba(251, 146, 60, 0.25),
+        0 0 20px rgba(251, 146, 60, 0.12);
+    }
+
+    .contact-submit-btn:not(:disabled):hover {
+      box-shadow:
+        0 12px 32px rgba(251, 146, 60, 0.45),
+        0 0 28px rgba(96, 165, 250, 0.2),
+        0 0 24px rgba(251, 146, 60, 0.3);
+    }
+
+    .contact-social-link {
+      display: inline-flex;
+      transition:
+        transform 0.25s ease,
+        color 0.25s ease,
+        filter 0.25s ease;
+    }
+
+    .contact-social-link:hover {
+      transform: scale(1.12);
+      color: var(--color-Orange-vibrant);
+      filter: drop-shadow(0 0 8px rgba(251, 146, 60, 0.55));
+    }
+
+    .dark .contact-social-link:hover {
+      color: var(--color-Orange-vibrant-dark);
+      filter: drop-shadow(0 0 10px rgba(251, 146, 60, 0.45));
+    }
+  </style>
+
   <script is:inline>
-    function initContactForm() {
-      const form = document.getElementById("conctact-form");
-      const result = document.getElementById("result");
-      const submitBtn = document.getElementById("submit-btn");
-      const btnText = document.getElementById("btn-text");
-      const btnLoading = document.getElementById("btn-loading");
+    (function () {
+      var EMAILJS_SRC =
+        "https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js";
+      var PUBLIC_KEY = "QVSetrXkf7f0AoTsi";
+      var SERVICE_ID = "service_wir8uv6";
+      var TEMPLATE_ID = "template_9p0sth5";
 
-      if (!form) return;
+      var emailjsReady = null;
+      var emailjsInited = false;
 
-      form.addEventListener("submit", async function (e) {
-        e.preventDefault();
-
-        // Mostrar estado de carga
-        submitBtn.disabled = true;
-        btnText.classList.add("hidden");
-        btnLoading.classList.remove("hidden");
-        result.classList.add("hidden");
-
-        const formData = new FormData(form);
-
-        try {
-          const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: formData,
-          });
-
-          const data = await response.json();
-
-          if (response.ok && data.success) {
-            // Éxito
-            result.textContent = "✅ ¡Mensaje enviado con éxito!";
-            result.className =
-              "text-sm font-medium text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 p-3 rounded-base";
-            result.classList.remove("hidden");
-            form.reset();
-          } else {
-            // Error del servidor
-            throw new Error(data.message || "Error al enviar");
-          }
-        } catch (error) {
-          // Error de red o del servidor
-          result.innerHTML = "❌ Algo salió mal. Por favor intenta de nuevo.";
-          result.className =
-            "text-sm font-medium text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 p-3 rounded-base";
-          result.classList.remove("hidden");
-          console.error("Error:", error);
-        } finally {
-          // Restaurar botón
-          submitBtn.disabled = false;
-          btnText.classList.remove("hidden");
-          btnLoading.classList.add("hidden");
+      function loadEmailJs() {
+        if (typeof window.emailjs !== "undefined") {
+          return Promise.resolve(window.emailjs);
         }
-      });
-    }
+        if (emailjsReady) return emailjsReady;
 
-    // Inicializar cuando el DOM esté listo
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initContactForm);
-    } else {
-      initContactForm();
-    }
+        emailjsReady = new Promise(function (resolve, reject) {
+          function fail() {
+            emailjsReady = null;
+            reject(new Error("EmailJS script failed to load"));
+          }
+          var s = document.querySelector("script[data-emailjs-cdn]");
+          if (s) {
+            if (typeof window.emailjs !== "undefined") {
+              resolve(window.emailjs);
+              return;
+            }
+            s.addEventListener("load", function () {
+              resolve(window.emailjs);
+            });
+            s.addEventListener("error", fail);
+            return;
+          }
+          var script = document.createElement("script");
+          script.src = EMAILJS_SRC;
+          script.async = true;
+          script.setAttribute("data-emailjs-cdn", "1");
+          script.onload = function () {
+            resolve(window.emailjs);
+          };
+          script.onerror = fail;
+          document.head.appendChild(script);
+        });
 
-    // Para navegación client-side (View Transitions)
-    document.addEventListener("astro:after-swap", initContactForm);
+        return emailjsReady;
+      }
+
+      function ensureEmailJsInit(emailjs) {
+        if (!emailjsInited && emailjs && typeof emailjs.init === "function") {
+          emailjs.init(PUBLIC_KEY);
+          emailjsInited = true;
+        }
+      }
+
+      function initContactForm() {
+        var form = document.getElementById("contact-form");
+        var result = document.getElementById("result");
+        var submitBtn = document.getElementById("submit-btn");
+        var btnText = document.getElementById("btn-text");
+        var btnLoading = document.getElementById("btn-loading");
+
+        if (!form || !submitBtn || !result) return;
+        if (form.getAttribute("data-emailjs-bound") === "1") return;
+        form.setAttribute("data-emailjs-bound", "1");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          submitBtn.disabled = true;
+          btnText.classList.add("hidden");
+          btnLoading.classList.remove("hidden");
+          result.classList.add("hidden");
+
+          loadEmailJs()
+            .then(function (emailjs) {
+              ensureEmailJsInit(emailjs);
+              return emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form);
+            })
+            .then(function () {
+              result.textContent =
+                "Message sent successfully. I'll get back to you soon!";
+              result.className =
+                "text-sm font-medium text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 p-3 rounded-base";
+              result.classList.remove("hidden");
+              form.reset();
+            })
+            .catch(function (err) {
+              console.error("EmailJS error:", err);
+              result.textContent =
+                "Something went wrong. Please try again in a moment or email me directly.";
+              result.className =
+                "text-sm font-medium text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 p-3 rounded-base";
+              result.classList.remove("hidden");
+            })
+            .finally(function () {
+              submitBtn.disabled = false;
+              btnText.classList.remove("hidden");
+              btnLoading.classList.add("hidden");
+            });
+        });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initContactForm);
+      } else {
+        initContactForm();
+      }
+
+      document.addEventListener("astro:after-swap", initContactForm);
+      document.addEventListener("astro:page-load", initContactForm);
+    })();
   </script>
 </section>

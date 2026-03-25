@@ -2,39 +2,87 @@
 title: "Swigato – Food Delivery Platform"
 description: "I developed a full-stack food delivery platform that supports real-time order tracking, dynamic user interactions, and scalable backend architecture. The system is designed to efficiently handle multiple users, optimize performance, and ensure smooth user experience across devices."
 image: "../../assets/images/global-leaders.png"
-projectUrl: "https://regalexia.com/trabaja-campamento-verano-eeuu-global-leaders-usa/"
+projectUrl: "https://swigato-food-website.vercel.app/"
+github: "https://github.com/123GuruSharan/Swigato-Food-Website.git"
+live: "https://swigato-food-website.vercel.app/"
+slug: "food-ordering-platform"
 technologies: ["React", "Node.js", "Express.js", "MongoDB"]
 featured: true
-publishedDate: 2025-10-20
+publishedDate: 2025-12-01
 order: 1
 icon: "code"
 ---
 
-# Bilingual Conversational Microservice for Lead Capture
+# Full-Stack Food Delivery Platform (Swigato)
 
-An intelligent virtual assistant designed to integrate natively into a WordPress environment, focused on automating customer service and increasing the conversion rate of users interested in exchange programs in the US.
+A scalable and responsive food delivery web application designed to streamline online ordering and restaurant management, focused on improving user experience and operational efficiency through real-time data synchronization.
+
+---
 
 ## The Challenge
 
-The client (Regalexia / GlobalLeaders USA) needed an interactive and scalable way to serve visitors to their landing page in real-time, resolving frequent questions in multiple languages and capturing contact data (leads) without overwhelming the human support team. The solution had to integrate frictionlessly into their existing PHP/WordPress-based web ecosystem.
+The goal was to build a complete food delivery ecosystem that allows users to browse menus, manage carts, and place orders seamlessly, while enabling restaurant administrators to manage items and orders efficiently.
+
+Key challenges included:
+
+- Handling real-time data synchronization between frontend and backend
+- Managing image uploads and dynamic rendering of food items
+- Implementing secure authentication and role-based access
+- Ensuring smooth deployment across different environments
+- Maintaining performance and stability with increasing data and users
+
+---
 
 ## The Solution and Architecture
 
-Instead of overloading the main server with heavy logic, I designed a **decoupled architecture**:
+To address these challenges, I designed a modular full-stack architecture using the MERN stack, ensuring scalability, performance, and maintainability.
 
-1. **Backend Microservice (FastAPI):** I developed an ultra-fast and asynchronous REST API in Python using FastAPI. This microservice acts as the "brain" of the chatbot, processing conversational logic, state management and user language detection.
-2. **Frontend Integration (PHP/JavaScript):** I created a custom and lightweight WordPress plugin that injects the chat user interface (UI) and communicates asynchronously with the microservice through HTTP requests.
-3. **Containerization and Deployment:** To ensure the application worked exactly the same in development as in production, I containerized the backend and deployed it independently on the client's server.
+### Backend (Node.js & Express)
+
+- Developed a RESTful API handling business logic and authentication
+- Implemented JWT-based authentication for secure access
+- Created APIs for food items, cart operations, and order processing
+- Enabled image upload and serving using Express
+
+### Frontend (React.js)
+
+- Built responsive UI with reusable components
+- Managed global state using Context API
+- Integrated APIs using Axios
+
+### Database (MongoDB)
+
+- Designed scalable schema for users, items, and orders
+- Optimized queries for performance
+
+### Deployment
+
+- Frontend deployed on Vercel
+- Backend hosted on Render
+- Database managed via MongoDB Atlas
+
+---
 
 ## Outstanding Technical Aspects
 
-- **FastAPI & Python:** Use of asynchronous programming (`async/await`) to handle multiple concurrent connections without blocking.
-- **Perimeter Security:** Implementation of strict **CORS** policies (limited to the client's domain) and **Rate Limiting** to prevent denial of service (DDoS) attacks or endpoint abuse by malicious bots.
-- **Multi-language Support:** Dynamic routing logic that adapts bot responses according to the user's browser preferences or explicit selection.
-- **Docker:** Creation of an optimized `Dockerfile` (multi-stage) to reduce image weight and isolate Python dependencies from the rest of the server.
+- Authentication using JWT and Bcrypt
+- Efficient state management with Context API
+- Dynamic image handling
+- Clean REST API design
+- Performance optimization using lazy loading
+- Robust error handling
 
-## Business Results and Impact
+---
 
-- **Increased conversion:** The bot implementation significantly increased lead convergence (users who leave their data after interacting with the assistant).
-- **Guaranteed stability:** Thanks to the containerized architecture and Rate Limiting policies, the service maintains impeccable _uptime_ even during traffic spikes generated by advertising campaigns.
-- **Decoupling:** By separating conversational logic from the CMS, the client now has a microservice that can be reused or scaled independently of their main website.
+## Business Impact
+
+- Achieved 200+ active users
+- Maintained stable performance across deployments
+- Built scalable modular architecture
+- Reduced manual effort through admin automation
+
+---
+
+## Key Takeaway
+
+This project helped me gain hands-on experience in building and deploying a real-world full-stack application, managing real-time data, and solving practical engineering challenges.

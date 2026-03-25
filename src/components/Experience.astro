@@ -6,7 +6,7 @@
 
 
 <section id="experience" class="experience-section py-20">
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-6">
     <h2 class="journey-title text-center mb-16">
       <span>Professional Journey</span>
     </h2>
@@ -32,7 +32,7 @@
         </div>
         <div class="flex items-center">
           <div class="timeline-content w-full md:w-[62%] md:pr-12 text-left mr-16">
-            <div class="timeline-card bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-xl p-10 shadow-lg hover:shadow-[0_0_18px_rgba(251,146,60,0.35)] transition-all duration-300 hover:-translate-y-1">
+            <div class="timeline-card bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-xl p-10 shadow-lg">
               <h3 class="text-2xl font-bold text-Text-light mb-2">Full Stack Developer Intern</h3>
               <h4 class="text-lg text-blue-400 font-medium mb-4">Happieloop Technologies</h4>
               <ul class="text-Text-light/80 text-sm lg:text-[15px] space-y-2">
@@ -76,7 +76,7 @@
         <div class="flex items-center">
           <div class="hidden md:block w-[38%]"></div>
           <div class="timeline-content w-full md:w-[62%] md:pl-12 ml-16">
-            <div class="timeline-card timeline-card-right bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-xl p-10 shadow-lg hover:shadow-[0_0_18px_rgba(251,146,60,0.35)] transition-all duration-300 hover:-translate-y-1">
+            <div class="timeline-card timeline-card-right bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-xl p-10 shadow-lg">
               <h3 class="text-2xl font-bold text-Text-light mb-2">Software Development Intern</h3>
               <h4 class="text-lg text-blue-400 font-medium mb-4">Infosys Springboard</h4>
               <ul class="text-Text-light/80 text-sm lg:text-[15px] space-y-3">
@@ -215,9 +215,10 @@
   .timeline-card:hover {
     transform: translateY(-6px) scale(1.02);
     box-shadow:
-      0 0 32px rgba(251,146,60,0.34),
-      0 14px 34px rgba(0,0,0,0.45);
-    border-color: rgba(251,146,60,0.45);
+      0 0 25px rgba(96, 165, 250, 0.2),
+      0 0 28px rgba(251, 146, 60, 0.28),
+      0 14px 34px rgba(0, 0, 0, 0.45);
+    border-color: rgba(251, 146, 60, 0.45);
   }
 
   /* Bottom (right) card only: prevent center-line overlap */
@@ -355,7 +356,9 @@
     }
     .timeline-card:hover {
       transform: none;
-      box-shadow: 0 0 25px rgba(59,130,246,0.4);
+      box-shadow:
+        0 0 22px rgba(96, 165, 250, 0.25),
+        0 0 20px rgba(251, 146, 60, 0.2);
     }
     .timeline-card ul li:hover {
       transform: translateX(2px);

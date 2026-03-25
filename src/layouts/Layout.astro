@@ -37,7 +37,306 @@ interface Props {
     <title>GuruSharan.dev | Full Stack Developer</title>
   </head>
   <body class={Astro.props.class}>
+    <div id="cursor-dot" aria-hidden="true"></div>
+    <div id="cursor-ring" aria-hidden="true">
+      <span id="cursor-text"></span>
+    </div>
     <slot />
+
+    <!-- Custom cursor (desktop / fine pointer only) -->
+    <script is:inline>
+      (function () {
+        function shouldUseCustomCursor() {
+          if (typeof window.matchMedia === "undefined") return true;
+          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            return false;
+          }
+          return (
+            window.matchMedia("(pointer: fine)").matches &&
+            window.matchMedia("(hover: hover)").matches &&
+            !window.matchMedia("(pointer: coarse)").matches
+          );
+        }
+
+        let rafId = 0;
+        let mouseX = 0;
+        let mouseY = 0;
+        let prevMouseX = 0;
+        let prevMouseY = 0;
+        let ringX = 0;
+        let ringY = 0;
+        let stateBaseScale = 1;
+        let velocityScale = 1;
+        let velocityScaleGoal = 1;
+        let lastMouseMove = 0;
+        let clickScale = 1;
+        let clickScaleTarget = 1;
+        let magneticEl = null;
+        let magneticRect = null;
+        let glowPulse = 0;
+        let onMove = null;
+        let onPointerOver = null;
+        let onPointerOut = null;
+        let onPointerDown = null;
+        let onPointerUp = null;
+        let onScrollResize = null;
+
+        function initCustomCursor() {
+          const dot = document.getElementById("cursor-dot");
+          const ring = document.getElementById("cursor-ring");
+          const cursorText = document.getElementById("cursor-text");
+          if (!dot || !ring) return;
+
+          if (!shouldUseCustomCursor()) {
+            document.documentElement.removeAttribute("data-custom-cursor");
+            document.documentElement.removeAttribute("data-cursor");
+            dot.style.display = "none";
+            ring.style.display = "none";
+            if (cursorText) cursorText.textContent = "";
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = 0;
+            magneticEl = null;
+            magneticRect = null;
+            velocityScaleGoal = 1;
+            velocityScale = 1;
+            lastMouseMove = 0;
+            if (onMove) {
+              document.removeEventListener("mousemove", onMove);
+              onMove = null;
+            }
+            if (onPointerOver) {
+              document.removeEventListener("pointerover", onPointerOver, true);
+              onPointerOver = null;
+            }
+            if (onPointerOut) {
+              document.removeEventListener("pointerout", onPointerOut, true);
+              onPointerOut = null;
+            }
+            if (onPointerDown) {
+              document.removeEventListener("pointerdown", onPointerDown, true);
+              onPointerDown = null;
+            }
+            if (onPointerUp) {
+              document.removeEventListener("pointerup", onPointerUp, true);
+              onPointerUp = null;
+            }
+            if (onScrollResize) {
+              window.removeEventListener("scroll", onScrollResize, true);
+              window.removeEventListener("resize", onScrollResize);
+              onScrollResize = null;
+            }
+            return;
+          }
+
+          document.documentElement.setAttribute("data-custom-cursor", "true");
+
+          function invalidateMagneticRect() {
+            magneticRect = magneticEl ? magneticEl.getBoundingClientRect() : null;
+          }
+
+          function setCursorStateFromElement(el) {
+            if (!ring) return;
+            stateBaseScale = 1;
+            document.documentElement.dataset.cursor = "default";
+            if (cursorText) {
+              cursorText.textContent = "";
+              cursorText.dataset.visible = "false";
+            }
+            ring.style.borderColor = "rgba(96, 165, 250, 0.5)";
+            ring.style.boxShadow = "none";
+            magneticEl = null;
+            magneticRect = null;
+
+            if (!el || el === document.documentElement || el === document.body) {
+              return;
+            }
+
+            const link = el.closest("a[href]");
+            if (link) {
+              document.documentElement.dataset.cursor = "link";
+              stateBaseScale = 1.6;
+              if (cursorText) {
+                cursorText.textContent = "VIEW";
+                cursorText.dataset.visible = "true";
+              }
+              ring.style.borderColor = "#ffffff";
+              magneticEl = link.closest("[data-magnetic]") || el.closest("[data-magnetic]");
+              invalidateMagneticRect();
+              return;
+            }
+
+            const media = el.closest("img, picture, video, .portfolio-card-hover");
+            if (media) {
+              document.documentElement.dataset.cursor = "media";
+              stateBaseScale = 1.8;
+              if (cursorText) {
+                cursorText.textContent = "OPEN";
+                cursorText.dataset.visible = "true";
+              }
+              ring.style.borderColor = "#ffffff";
+              magneticEl = media.closest("[data-magnetic]") || el.closest("[data-magnetic]");
+              invalidateMagneticRect();
+              return;
+            }
+
+            const btn = el.closest(
+              "button, [role='button'], input[type='submit'], summary, label[for]"
+            );
+            if (btn) {
+              document.documentElement.dataset.cursor = "button";
+              stateBaseScale = 1.4;
+              if (cursorText) cursorText.dataset.visible = "false";
+              ring.style.borderColor = "#ffffff";
+              ring.style.boxShadow =
+                "0 0 18px rgba(96, 165, 250, 0.55), 0 0 36px rgba(96, 165, 250, 0.2)";
+              magneticEl = btn.closest("[data-magnetic]") || el.closest("[data-magnetic]");
+              invalidateMagneticRect();
+              return;
+            }
+
+            const textBlock = el.closest("p, span");
+            if (textBlock && !el.closest("a, button, [role='button']")) {
+              document.documentElement.dataset.cursor = "text";
+              stateBaseScale = 1;
+              if (cursorText) cursorText.dataset.visible = "false";
+              return;
+            }
+          }
+
+          function syncCursorStateFromPoint() {
+            const el = document.elementFromPoint(mouseX, mouseY);
+            setCursorStateFromElement(el);
+          }
+
+          dot.style.display = "block";
+          ring.style.display = "block";
+
+          mouseX = ringX = window.innerWidth / 2;
+          mouseY = ringY = window.innerHeight / 2;
+          prevMouseX = mouseX;
+          prevMouseY = mouseY;
+          lastMouseMove =
+            typeof performance !== "undefined" ? performance.now() : Date.now();
+          velocityScaleGoal = 1;
+          velocityScale = 1;
+          dot.style.left = mouseX + "px";
+          dot.style.top = mouseY + "px";
+          ring.style.left = ringX + "px";
+          ring.style.top = ringY + "px";
+          setCursorStateFromElement(null);
+
+          if (onMove) document.removeEventListener("mousemove", onMove);
+          onMove = function (e) {
+            const vx = e.clientX - prevMouseX;
+            const vy = e.clientY - prevMouseY;
+            prevMouseX = e.clientX;
+            prevMouseY = e.clientY;
+            const speed = Math.sqrt(vx * vx + vy * vy);
+            velocityScaleGoal = 1 + Math.min(speed / 100, 0.5);
+            lastMouseMove = typeof performance !== "undefined" ? performance.now() : Date.now();
+
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.left = mouseX + "px";
+            dot.style.top = mouseY + "px";
+            syncCursorStateFromPoint();
+          };
+          document.addEventListener("mousemove", onMove, { passive: true });
+
+          if (onPointerOver)
+            document.removeEventListener("pointerover", onPointerOver, true);
+          if (onPointerOut)
+            document.removeEventListener("pointerout", onPointerOut, true);
+
+          onPointerOver = function (e) {
+            if (e.pointerType === "touch") return;
+            syncCursorStateFromPoint();
+          };
+          onPointerOut = function (e) {
+            if (e.pointerType === "touch") return;
+            syncCursorStateFromPoint();
+          };
+          document.addEventListener("pointerover", onPointerOver, true);
+          document.addEventListener("pointerout", onPointerOut, true);
+
+          if (onPointerDown)
+            document.removeEventListener("pointerdown", onPointerDown, true);
+          if (onPointerUp)
+            document.removeEventListener("pointerup", onPointerUp, true);
+
+          onPointerDown = function (e) {
+            if (e.pointerType === "touch") return;
+            if (e.button !== 0) return;
+            clickScaleTarget = 0.85;
+            glowPulse = 1;
+            ring.classList.add("cursor-ring--pulse");
+            window.setTimeout(function () {
+              ring.classList.remove("cursor-ring--pulse");
+            }, 380);
+          };
+          onPointerUp = function (e) {
+            if (e.pointerType === "touch") return;
+            clickScaleTarget = 1;
+          };
+          document.addEventListener("pointerdown", onPointerDown, true);
+          document.addEventListener("pointerup", onPointerUp, true);
+
+          if (onScrollResize) {
+            window.removeEventListener("scroll", onScrollResize, true);
+            window.removeEventListener("resize", onScrollResize);
+          }
+          onScrollResize = function () {
+            invalidateMagneticRect();
+          };
+          window.addEventListener("scroll", onScrollResize, { capture: true, passive: true });
+          window.addEventListener("resize", onScrollResize, { passive: true });
+
+          if (rafId) cancelAnimationFrame(rafId);
+          function animate() {
+            const now = typeof performance !== "undefined" ? performance.now() : Date.now();
+            if (now - lastMouseMove > 24) {
+              velocityScaleGoal += (1 - velocityScaleGoal) * 0.12;
+            }
+            velocityScale += (velocityScaleGoal - velocityScale) * 0.22;
+
+            clickScale += (clickScaleTarget - clickScale) * 0.35;
+            if (glowPulse > 0) glowPulse *= 0.88;
+
+            let targetX = mouseX;
+            let targetY = mouseY;
+            if (magneticEl) {
+              if (!magneticRect) invalidateMagneticRect();
+              if (magneticRect) {
+                const cx = magneticRect.left + magneticRect.width * 0.5;
+                const cy = magneticRect.top + magneticRect.height * 0.5;
+                targetX = mouseX + (cx - mouseX) * 0.15;
+                targetY = mouseY + (cy - mouseY) * 0.15;
+              }
+            }
+
+            const ringEase = magneticEl ? 0.11 : 0.1;
+            ringX += (targetX - ringX) * ringEase;
+            ringY += (targetY - ringY) * ringEase;
+
+            ring.style.left = ringX + "px";
+            ring.style.top = ringY + "px";
+
+            ring.classList.toggle("cursor-ring--magnetic", !!magneticEl);
+
+            const combinedScale =
+              stateBaseScale * velocityScale * clickScale * (1 + glowPulse * 0.08);
+            ring.style.transform =
+              "translate(-50%, -50%) scale(" + combinedScale.toFixed(4) + ")";
+
+            rafId = requestAnimationFrame(animate);
+          }
+          animate();
+        }
+
+        initCustomCursor();
+        document.addEventListener("astro:page-load", initCustomCursor);
+      })();
+    </script>
 
     <!-- Intersection Observer para animaciones de reveal -->
     <script is:inline>

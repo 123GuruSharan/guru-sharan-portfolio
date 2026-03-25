@@ -1,0 +1,148 @@
+---
+import { Image, getImage } from "astro:assets";
+import CodeIcon from "./CodeIcon.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  imageUrl: ImageMetadata;
+  verifyLink?: string;
+  issuedDate?: Date;
+}
+
+const { title, description, imageUrl, verifyLink, issuedDate } = Astro.props;
+
+const verifyHref =
+  verifyLink ?? (await getImage({ src: imageUrl, width: 1600 })).src;
+
+const modalId = `modal-cert-${title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "")}`;
+---
+
+<div
+  class="item-revelar portfolio-card-hover bg-neutral-primary-soft w-full border border-default rounded-base shadow-xs flex flex-col h-full"
+>
+  <button
+    type="button"
+    data-modal-target={modalId}
+    data-modal-toggle={modalId}
+    class="group w-full h-48 overflow-hidden block cursor-pointer shrink-0 text-left"
+  >
+    <Image
+      src={imageUrl}
+      alt={title}
+      class="rounded-t-base object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+      widths={[400, 800]}
+      sizes="(max-width: 400px) 100vw, 400px"
+      loading="lazy"
+    />
+  </button>
+  <div class="p-6 flex flex-col grow">
+    <button
+      type="button"
+      data-modal-target={modalId}
+      data-modal-toggle={modalId}
+      class="text-left w-full"
+    >
+      <h3
+        class="mt-3 mb-6 text-2xl font-semibold tracking-tight text-heading hover:text-Orange-vibrant dark:hover:text-Orange-vibrant-dark transition-colors flex items-center gap-2"
+      >
+        <CodeIcon
+          size={28}
+          class="text-Orange-vibrant dark:text-Orange-vibrant-dark shrink-0"
+        />
+        {title}
+      </h3>
+    </button>
+    <p class="text-body font-body mb-4">
+      {description}
+    </p>
+  </div>
+</div>
+
+<div
+  id={modalId}
+  tabindex="-1"
+  aria-hidden="true"
+  class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+>
+  <div class="relative p-4 w-full max-w-4xl max-h-full">
+    <div
+      class="relative bg-Background-light dark:bg-Background-dark rounded-base shadow-lg border border-Border dark:border-Border-dark"
+    >
+      <div
+        class="flex items-center justify-between p-4 md:p-5 border-b border-Border dark:border-Border-dark rounded-t-base"
+      >
+        <h3 class="text-2xl font-bold text-Text-dark dark:text-Text-light">
+          {title}
+        </h3>
+        <button
+          type="button"
+          class="text-gray-400 bg-transparent hover:bg-neutral-primary-soft hover:text-Text-dark dark:hover:text-Text-light rounded-base text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+          data-modal-hide={modalId}
+        >
+          <svg
+            class="w-3 h-3"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+      </div>
+      <div class="p-4 md:p-5 space-y-4">
+        <div class="w-full h-64 md:h-96 overflow-hidden rounded-base">
+          <Image
+            src={imageUrl}
+            alt={title}
+            class="w-full h-full object-cover"
+            widths={[600, 1200]}
+            sizes="(max-width: 768px) 100vw, 1200px"
+            loading="lazy"
+          />
+        </div>
+        <p class="text-base leading-relaxed text-body dark:text-body-light">
+          {description}
+        </p>
+        {
+          issuedDate && (
+            <p class="text-sm text-body dark:text-body-light">
+              Issued{" "}
+              {new Date(issuedDate).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
+          )
+        }
+      </div>
+      <div
+        class="flex items-center justify-end gap-3 p-4 md:p-5 border-t border-Border dark:border-Border-dark rounded-b-base"
+      >
+        <a
+          href={verifyHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-Orange-vibrant hover:bg-Orange-vibrant/90 rounded-base transition-colors"
+        >
+          Verify
+        </a>
+        <button
+          data-modal-hide={modalId}
+          type="button"
+          class="px-5 py-2.5 text-sm font-medium text-Text-dark dark:text-Text-light bg-neutral-primary-soft hover:bg-neutral-secondary-soft border border-Border dark:border-Border-dark rounded-base transition-colors"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

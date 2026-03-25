@@ -12,6 +12,8 @@ interface Props {
   description: string;
   imageUrl: ImageMetadata | string;
   projectUrl: string;
+  github?: string;
+  live?: string;
   tecnologies?: string[];
   icon?: "code" | "message" | "house" | "user";
   slug?: string;
@@ -23,6 +25,8 @@ const {
   description,
   imageUrl,
   projectUrl,
+  github,
+  live,
   tecnologies = [],
   icon = "code",
   slug,
@@ -41,20 +45,24 @@ const iconComponents = {
 };
 
 const IconComponent = iconComponents[icon];
+const isAirportLostFoundProject = title === "Airport Lost & Found System";
+const projectCardImageClass = isAirportLostFoundProject
+  ? "w-full h-48 object-cover rounded-lg transition-transform duration-500 group-hover:scale-110"
+  : "rounded-t-base object-cover w-full h-full transition-transform duration-500 group-hover:scale-110";
 ---
 
 <div
-  class="item-revelar bg-neutral-primary-soft w-full border border-default rounded-base shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col h-full"
+  class="item-revelar portfolio-card-hover bg-neutral-primary-soft w-full border border-default rounded-base shadow-xs flex flex-col h-full"
 >
   {disableModal && slug ? (
     <a
       href={`/projects/${slug}`}
-      class="w-full h-48 overflow-hidden block shrink-0"
+      class="w-full h-48 overflow-hidden block shrink-0 group"
     >
       {
         typeof imageUrl === "string" ? (
           <img
-            class="rounded-t-base object-cover w-full h-full"
+            class={projectCardImageClass}
             src={imageUrl}
             alt={title}
           />
@@ -62,7 +70,7 @@ const IconComponent = iconComponents[icon];
           <Image
             src={imageUrl}
             alt={title}
-            class="rounded-t-base object-cover w-full h-full"
+            class={projectCardImageClass}
             widths={[400, 800]}
             sizes="(max-width: 400px) 100vw, 400px"
             loading="lazy"
@@ -75,12 +83,12 @@ const IconComponent = iconComponents[icon];
       type="button"
       data-modal-target={modalId}
       data-modal-toggle={modalId}
-      class="w-full h-48 overflow-hidden block cursor-pointer shrink-0"
+      class="w-full h-48 overflow-hidden block cursor-pointer shrink-0 group"
     >
       {
         typeof imageUrl === "string" ? (
           <img
-            class="rounded-t-base object-cover w-full h-full"
+            class={projectCardImageClass}
             src={imageUrl}
             alt={title}
           />
@@ -88,7 +96,7 @@ const IconComponent = iconComponents[icon];
           <Image
             src={imageUrl}
             alt={title}
-            class="rounded-t-base object-cover w-full h-full"
+            class={projectCardImageClass}
             widths={[400, 800]}
             sizes="(max-width: 400px) 100vw, 400px"
             loading="lazy"
@@ -137,13 +145,13 @@ const IconComponent = iconComponents[icon];
     <div class="flex flex-wrap gap-2 mt-auto">
       {tecnologies.map((tech) => <Badge label={tech} />)}
     </div>
-    <div class="mt-4 flex gap-2 items-center justify-between">
+    <div class="mt-4 flex gap-2 items-center justify-start">
       <div class="flex gap-2">
         <a
-          href={projectUrl}
+          href={github || projectUrl}
           target="_blank"
           rel="noopener noreferrer me"
-          aria-label={`ver el proyecto ${title}`}
+          aria-label={`view the project ${title}`}
         >
           <IconsTecnology
             name="github"
@@ -151,10 +159,10 @@ const IconComponent = iconComponents[icon];
           />
         </a>
         <a
-          href={projectUrl}
+          href={live || projectUrl}
           target="_blank"
           rel="noopener noreferrer me"
-          aria-label={`compartir el proyecto ${title}`}
+          aria-label={`open live demo for ${title}`}
           class="text-black dark:text-white hover:text-Orange-vibrant"
         >
           <svg
@@ -175,16 +183,6 @@ const IconComponent = iconComponents[icon];
           >
         </a>
       </div>
-      {
-        slug && (
-          <a
-            href={`/projects/${slug}`}
-            class="text-sm font-medium text-Orange-vibrant dark:text-Orange-vibrant-dark hover:underline"
-          >
-            Ver más →
-          </a>
-        )
-      }
     </div>
   </div>
 </div>
@@ -270,14 +268,14 @@ const IconComponent = iconComponents[icon];
         class="flex items-center justify-end gap-3 p-4 md:p-5 border-t border-Border dark:border-Border-dark rounded-b-base"
       >
         <a
-          href={projectUrl}
+          href={github || projectUrl}
           target="_blank"
           rel="noopener noreferrer"
-          arial-label={`ver el proyecto ${title}`}
+          aria-label={`view repository for ${title}`}
           class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-Orange-vibrant hover:bg-Orange-vibrant/90 rounded-base transition-colors"
         >
           <IconsTecnology name="github" size={20} class="text-white" />
-          Ver en GitHub
+          View on GitHub
         </a>
         <button
           data-modal-hide={modalId}

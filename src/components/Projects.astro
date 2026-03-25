@@ -12,7 +12,7 @@ const projects = allProjects
 ---
 
 <section id="projects" class="projects flex flex-col justify-center py-20">
-  <div class="max-w-6xl md:px-4 px-6">
+  <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-16 max-w-3xl mx-auto">
       <h2 class="text-4xl font-bold mb-4 dark:text-white">Latest Projects</h2>
       <p class="font-medium text-lg text-body dark:text-body-light">
@@ -30,6 +30,8 @@ const projects = allProjects
             description={project.data.description}
             imageUrl={project.data.image}
             projectUrl={project.data.projectUrl}
+            github={project.data.github}
+            live={project.data.live}
             tecnologies={project.data.technologies}
             icon={project.data.icon}
             slug={project.id.replace(".md", "")}
@@ -40,7 +42,7 @@ const projects = allProjects
     <div class="text-center mt-12">
       <a
         href="/projects"
-        class="inline-flex items-center gap-2 px-6 py-3 text-white bg-Orange-vibrant hover:bg-Orange-vibrant/90 dark:bg-Orange-vibrant-dark dark:hover:bg-Orange-vibrant-dark/90 rounded-base transition-colors font-medium"
+        class="inline-flex items-center gap-2 px-6 py-3 text-white bg-Orange-vibrant hover:bg-Orange-vibrant/90 dark:bg-Orange-vibrant-dark dark:hover:bg-Orange-vibrant-dark/90 rounded-base transition-all duration-300 font-medium shadow-lg hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/25"
       >
         View all projects
         <svg

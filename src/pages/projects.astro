@@ -103,7 +103,7 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.data.technologies))]
                   projectUrl={project.data.projectUrl}
                   tecnologies={project.data.technologies}
                   icon={project.data.icon}
-                  slug={project.id.replace(".md", "")}
+                  slug={project.data.slug || project.id.replace(".md", "")}
                   disableModal={true}
                 />
               </div>

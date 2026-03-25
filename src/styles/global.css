@@ -119,11 +119,21 @@ body {
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(40px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes hero-drift {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
     }
   }
 }
@@ -131,7 +141,7 @@ body {
 /* Estilos para elementos que se revelan */
 .item-revelar {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(40px);
 }
 
 .item-revelar.animate-in {
@@ -159,11 +169,140 @@ body {
 }
 
 /* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
-/* Active Navigation Link Styling */
+/* Portfolio cards — unified hover (projects, certificates, timeline cards) */
+.portfolio-card-hover {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.portfolio-card-hover:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 0 25px rgba(96, 165, 250, 0.2),
+    0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.dark .portfolio-card-hover:hover {
+  box-shadow:
+    0 0 25px rgba(96, 165, 250, 0.18),
+    0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Hero subtle motion */
+.animate-hero-drift {
+  animation: hero-drift 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-drift {
+    animation: none;
+  }
+
+  .item-revelar.animate-in {
+    animation-duration: 0.01ms;
+  }
+}
+
+/* Scrollbar — light / dark */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(27, 100%, 51%) hsl(240 100% 96%);
+  }
+
+  .dark * {
+    scrollbar-color: hsl(22, 100%, 55%) hsl(240 27% 12%);
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: hsl(240 100% 96%);
+  }
+
+  .dark *::-webkit-scrollbar-track {
+    background: hsl(240 27% 12%);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      hsl(27, 100%, 51%),
+      hsl(180, 100%, 42%)
+    );
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .dark *::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      hsl(22, 100%, 58%),
+      hsl(185, 100%, 55%)
+    );
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+}
+
+/* Navbar — active link + underline */
+#navbar-default ul a {
+  position: relative;
+  transition:
+    color 0.25s ease,
+    font-weight 0.2s ease;
+}
+
+#navbar-default ul a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    hsl(27, 100%, 51%),
+    hsl(180, 100%, 45%)
+  );
+  transition: width 0.28s ease;
+}
+
+.dark #navbar-default ul a::after {
+  background: linear-gradient(
+    90deg,
+    hsl(22, 100%, 64%),
+    hsl(185, 100%, 61%)
+  );
+}
+
+#navbar-default ul a.active::after {
+  width: 100%;
+}
+
+#navbar-default ul a.active {
+  color: hsl(27, 100%, 51%);
+  font-weight: 600;
+}
+
+.dark #navbar-default ul a.active {
+  color: hsl(22, 100%, 64%);
+}
+
+/* Legacy selector support */
 nav a.active {
   color: hsl(27, 100%, 51%);
   font-weight: 600;
@@ -171,4 +310,126 @@ nav a.active {
 
 .dark nav a.active {
   color: hsl(22, 100%, 64%);
+}
+
+/* Custom cursor (enabled via JS: html[data-custom-cursor="true"]) */
+#cursor-dot,
+#cursor-ring {
+  display: none;
+}
+
+html[data-custom-cursor="true"] #cursor-dot,
+html[data-custom-cursor="true"] #cursor-ring {
+  display: block;
+}
+
+html[data-custom-cursor="true"] body {
+  cursor: none;
+}
+
+html[data-custom-cursor="true"] input,
+html[data-custom-cursor="true"] textarea,
+html[data-custom-cursor="true"] select,
+html[data-custom-cursor="true"] [contenteditable="true"] {
+  cursor: text;
+}
+
+#cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: #60a5fa;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  left: 0;
+  top: 0;
+  will-change: transform, left, top;
+}
+
+#cursor-ring {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(96, 165, 250, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%) scale(1);
+  transition:
+    width 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  left: 0;
+  top: 0;
+  will-change: transform, left, top;
+}
+
+#cursor-ring.cursor-ring--magnetic {
+  transition:
+    width 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#cursor-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+html[data-custom-cursor="true"] #cursor-text[data-visible="true"] {
+  opacity: 1;
+}
+
+html[data-cursor="text"] #cursor-ring {
+  width: 22px;
+  height: 22px;
+  opacity: 0.72;
+  border-width: 1.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-custom-cursor="true"] #cursor-text {
+    transition: none;
+  }
+}
+
+@keyframes cursor-ring-pulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(96, 165, 250, 0.5),
+      0 0 0 0 rgba(255, 255, 255, 0.2);
+  }
+  55% {
+    box-shadow:
+      0 0 22px 4px rgba(96, 165, 250, 0.45),
+      0 0 40px 8px rgba(96, 165, 250, 0.15);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(96, 165, 250, 0),
+      0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+html[data-custom-cursor="true"] #cursor-ring.cursor-ring--pulse {
+  animation: cursor-ring-pulse 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }

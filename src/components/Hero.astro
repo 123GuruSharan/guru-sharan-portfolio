@@ -26,7 +26,7 @@ import mePic from "../assets/images/me_pic.jpg";
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <!-- Text Content -->
-        <div class="lg:col-span-7 space-y-8">
+        <div class="lg:col-span-7 space-y-8 animate-hero-drift">
           <!-- Terminal-style badge -->
           <div class="item-revelar">
             <div
@@ -62,7 +62,7 @@ import mePic from "../assets/images/me_pic.jpg";
                   >const</span
                 >
                 <h1
-                  class="text-5xl md:text-6xl lg:text-7xl font-bold text-Text-dark dark:text-white tracking-tight"
+                  class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-Orange-vibrant via-Cyan-accent to-Orange-vibrant dark:from-Orange-vibrant-dark dark:via-Cyan-accent-dark dark:to-Orange-vibrant-dark bg-clip-text text-transparent"
                 >
                   Guru Sharan
                 </h1>
@@ -210,7 +210,8 @@ import mePic from "../assets/images/me_pic.jpg";
           <div class="item-revelar flex flex-wrap gap-4">
             <a
               href="/projects"
-              class="group relative inline-flex items-center gap-3 px-8 py-3 text-white bg-Orange-vibrant rounded-lg font-medium overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-Orange-vibrant/50 hover:-translate-y-1 transform"
+              data-magnetic
+              class="group relative inline-flex items-center gap-3 px-8 py-3 text-white bg-Orange-vibrant rounded-lg font-medium overflow-hidden transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-cyan-500/30 hover:shadow-Orange-vibrant/40 hover:-translate-y-0.5 transform"
             >
               <div
                 class="absolute inset-0 bg-gradient-to-r from-Orange-vibrant to-Cyan-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -230,9 +231,9 @@ import mePic from "../assets/images/me_pic.jpg";
             </a>
 
             <a
-              href="#"
-              download
-              class="group relative inline-flex items-center gap-3 px-8 py-3 text-Text-dark dark:text-Text-light bg-Background-light dark:bg-Background-dark border-2 border-Border dark:border-Border-dark rounded-lg font-medium overflow-hidden transition-all duration-300 hover:border-Cyan-accent dark:hover:border-Cyan-accent-dark hover:shadow-xl hover:shadow-Cyan-accent/20 dark:hover:shadow-Cyan-accent-dark/20 hover:-translate-y-1 transform"
+              href="/resume"
+              data-magnetic
+              class="group relative inline-flex items-center gap-3 px-8 py-3 text-Text-dark dark:text-Text-light bg-Background-light dark:bg-Background-dark border-2 border-Border dark:border-Border-dark rounded-lg font-medium overflow-hidden transition-all duration-300 hover:scale-105 shadow-md hover:shadow-xl hover:shadow-cyan-500/25 hover:border-Cyan-accent dark:hover:border-Cyan-accent-dark hover:-translate-y-0.5 transform"
             >
               <div
                 class="absolute inset-0 bg-Cyan-accent/10 dark:bg-Cyan-accent-dark/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -250,14 +251,14 @@ import mePic from "../assets/images/me_pic.jpg";
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              <span class="relative z-10">Download CV</span>
+              <span class="relative z-10">View Resume</span>
             </a>
           </div>
         </div>
 
         <!-- Avatar with enhanced styling -->
         <div class="lg:col-span-5 flex justify-center lg:justify-end">
-          <div class="item-revelar relative">
+          <div class="item-revelar relative group">
             <!-- Animated glow background -->
             <div
               class="absolute inset-0 bg-gradient-to-r from-Orange-vibrant/30 to-Cyan-accent/30 dark:from-Orange-vibrant-dark/30 dark:to-Cyan-accent-dark/30 rounded-full blur-2xl animate-pulse"
@@ -292,16 +293,20 @@ import mePic from "../assets/images/me_pic.jpg";
             </div>
 
             <!-- Image with floating animation -->
-            <Image
-              transition:name="perfil"
-              class="object-cover relative z-10 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full animate-float"
-              src={mePic}
-              alt="Guru Sharan Profile Picture"
-              width={410}
-              height={536}
-              loading={"eager"}
-              fetchpriority="high"
-            />
+            <div
+              class="relative z-10 rounded-full overflow-hidden animate-float ring-2 ring-Border/50 dark:ring-Border-dark/50"
+            >
+              <Image
+                transition:name="perfil"
+                class="object-cover block w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full transition-transform duration-500 ease-out group-hover:scale-110"
+                src={mePic}
+                alt="Guru Sharan Profile Picture"
+                width={410}
+                height={536}
+                loading={"eager"}
+                fetchpriority="high"
+              />
+            </div>
           </div>
         </div>
       </div>
