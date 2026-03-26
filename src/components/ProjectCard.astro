@@ -49,6 +49,8 @@ const isAirportLostFoundProject = title === "Airport Lost & Found System";
 const projectCardImageClass = isAirportLostFoundProject
   ? "w-full h-48 object-cover rounded-lg transition-transform duration-500 group-hover:scale-110"
   : "rounded-t-base object-cover w-full h-full transition-transform duration-500 group-hover:scale-110";
+
+const viewMoreHref = slug ? `/projects/${slug}` : projectUrl;
 ---
 
 <div
@@ -142,6 +144,9 @@ const projectCardImageClass = isAirportLostFoundProject
     <p class="text-body font-body mb-4">
       {description}
     </p>
+    <a href={viewMoreHref} class="view-more">
+      View more →
+    </a>
     <div class="flex flex-wrap gap-2 mt-auto">
       {tecnologies.map((tech) => <Badge label={tech} />)}
     </div>

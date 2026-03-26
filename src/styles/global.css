@@ -195,6 +195,19 @@ body {
     0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
+/* Project card "View more" link (ensure visible in production builds) */
+.view-more {
+  display: inline-block;
+  margin-top: 12px;
+  color: #ff7a18;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.view-more:hover {
+  text-decoration: underline;
+}
+
 /* Hero subtle motion */
 .animate-hero-drift {
   animation: hero-drift 7s ease-in-out infinite;
