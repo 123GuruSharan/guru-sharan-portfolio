@@ -7,6 +7,11 @@ interface Props {
   title?: string;
   description?: string;
 }
+
+const pageTitle = Astro.props.title ?? "GuruSharan.dev | Full Stack Developer";
+const pageDescription =
+  Astro.props.description ??
+  "Portfolio of Guru Sharan, a Full Stack Developer specializing in React, Node.js, and scalable web applications.";
 ---
 
 <!doctype html>
@@ -17,24 +22,30 @@ interface Props {
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <!-- seo -->
-    <meta
-      name="description"
-      content="Portfolio of Guru Sharan, a Full Stack Developer specializing in React, Node.js, and scalable web applications."
-    />
+    <meta name="description" content={pageDescription} />
     <meta name="keywords" content="Guru Sharan, Full Stack Developer, React, Node.js, MongoDB, Portfolio" />
     <meta name="author" content="Guru Sharan Kumar Priye" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://gurusharan.dev/" />
-    <meta property="og:title" content="GuruSharan.dev | Full Stack Developer Portfolio" />
-    <meta
-      property="og:description"
-      content="Portfolio of Guru Sharan, a Full Stack Developer specializing in React, Node.js, and scalable web applications."
-    />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:image" content="/og-logo.png" />
     <ClientRouter />
 
-    <title>GuruSharan.dev | Full Stack Developer</title>
+    <title>{pageTitle}</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NCVL0Y23N"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = window.gtag || gtag;
+      gtag("js", new Date());
+      gtag("config", "G-3NCVL0Y23N");
+    </script>
   </head>
   <body class={Astro.props.class}>
     <div id="cursor-dot" aria-hidden="true"></div>
@@ -383,6 +394,138 @@ interface Props {
       document.addEventListener("astro:page-load", () => {
         flowbite.initFlowbite();
       });
+    </script>
+
+    <!-- Portfolio analytics and event tracking -->
+    <script is:inline>
+      (function () {
+        if (window.__portfolioAnalyticsBootstrapped) return;
+        window.__portfolioAnalyticsBootstrapped = true;
+
+        var firedEvents = new Set();
+        var startTime = Date.now();
+        var scrollTracked = false;
+        var sectionObserver = null;
+
+        function trackEvent(name, params) {
+          if (typeof window.gtag !== "function") return;
+          window.gtag("event", name, params || {});
+        }
+        window.trackPortfolioEvent = trackEvent;
+
+        function initClickTracking() {
+          if (window.__portfolioClickTrackingInit) return;
+          window.__portfolioClickTrackingInit = true;
+          document.addEventListener(
+            "click",
+            function (e) {
+              var target = e.target instanceof Element ? e.target : null;
+              if (!target) return;
+
+              var tracked = target.closest("[data-track-event]");
+              if (tracked) {
+                var eventName = tracked.getAttribute("data-track-event");
+                var label = tracked.getAttribute("data-track-label") || "";
+                var location = tracked.getAttribute("data-track-location") || "";
+                if (eventName) {
+                  trackEvent(eventName, {
+                    event_label: label,
+                    section: location || "portfolio",
+                  });
+                }
+              }
+
+              var link = target.closest("a[href]");
+              if (!link) return;
+              var href = link.getAttribute("href") || "";
+              if (!href || href.startsWith("#")) return;
+              var isExternal =
+                href.startsWith("http://") || href.startsWith("https://");
+              if (!isExternal) return;
+              var url = new URL(href, window.location.origin);
+              if (url.origin !== window.location.origin) {
+                trackEvent("outbound_link_click", {
+                  event_label: url.href,
+                  link_domain: url.hostname,
+                });
+              }
+            },
+            { passive: true }
+          );
+        }
+
+        function initScrollTracking() {
+          if (window.__portfolioScrollTrackingInit) return;
+          window.__portfolioScrollTrackingInit = true;
+          function onScroll() {
+            if (scrollTracked) return;
+            var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            if (maxScroll <= 0) return;
+            var ratio = window.scrollY / maxScroll;
+            if (ratio >= 0.5) {
+              scrollTracked = true;
+              trackEvent("scroll_50_percent", { page_path: window.location.pathname });
+            }
+          }
+          window.addEventListener("scroll", onScroll, { passive: true });
+          onScroll();
+        }
+
+        function initSectionTracking() {
+          firedEvents = new Set();
+          if (sectionObserver) sectionObserver.disconnect();
+          var sectionIds = ["hero", "projects", "contact"];
+          sectionObserver = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                var id = entry.target.id;
+                if (!id || firedEvents.has(id)) return;
+                firedEvents.add(id);
+                trackEvent("section_view", {
+                  event_label: id,
+                  page_path: window.location.pathname,
+                });
+              });
+            },
+            { threshold: 0.35 }
+          );
+
+          sectionIds.forEach(function (id) {
+            var section = document.getElementById(id);
+            if (section) sectionObserver.observe(section);
+          });
+        }
+
+        function initTimeTracking() {
+          if (window.__portfolioTimeTrackingInit) return;
+          window.__portfolioTimeTrackingInit = true;
+          function sendTimeSpent() {
+            var seconds = Math.round((Date.now() - startTime) / 1000);
+            if (seconds < 1) return;
+            trackEvent("time_spent", {
+              value: seconds,
+              page_path: window.location.pathname,
+            });
+          }
+          window.addEventListener("pagehide", sendTimeSpent);
+          window.addEventListener("beforeunload", sendTimeSpent);
+        }
+
+        function initializePortfolioTracking() {
+          initClickTracking();
+          initScrollTracking();
+          initSectionTracking();
+          initTimeTracking();
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initializePortfolioTracking);
+        } else {
+          initializePortfolioTracking();
+        }
+        document.addEventListener("astro:page-load", initializePortfolioTracking);
+      })();
     </script>
   </body>
 </html>

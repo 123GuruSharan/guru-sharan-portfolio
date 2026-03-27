@@ -54,23 +54,11 @@ import mePic from "../assets/images/me_pic.jpg";
 
           <!-- Main Heading -->
           <div class="item-revelar space-y-6">
-            <!-- Name with syntax highlighting -->
-            <div class="space-y-2">
-              <div class="flex items-baseline gap-2 flex-wrap">
-                <span
-                  class="text-Cyan-accent dark:text-Cyan-accent-dark font-mono text-lg"
-                  >const</span
-                >
-                <h1
-                  class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-Orange-vibrant via-Cyan-accent to-Orange-vibrant dark:from-Orange-vibrant-dark dark:via-Cyan-accent-dark dark:to-Orange-vibrant-dark bg-clip-text text-transparent"
-                >
-                  Guru Sharan
-                </h1>
-                <span class="text-body dark:text-body-light font-mono text-lg"
-                  >=</span
-                >
-              </div>
-            </div>
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-Text-dark dark:text-Text-light leading-tight"
+            >
+              Full Stack Developer | Building Scalable Web Applications
+            </h1>
 
             <!-- Role/Expertise with Typing Animation -->
             <div
@@ -104,7 +92,7 @@ import mePic from "../assets/images/me_pic.jpg";
                     >focus:</span
                   >
                   <span class="text-Text-dark dark:text-Text-light"
-                    >"Building scalable web applications with real-world impact"</span
+                    >"Scalable backend systems, modern frontends, and measurable business impact"</span
                   >
                 </div>
                 <!-- Stack -->
@@ -126,9 +114,8 @@ import mePic from "../assets/images/me_pic.jpg";
             <p
               class="text-lg md:text-xl text-body dark:text-body-light leading-relaxed max-w-2xl"
             >
-              I build full-stack web applications including food delivery platforms
-              and smart tracking systems. Passionate about clean code, scalable backend
-              architecture, and modern UI.
+              I help teams ship fast, reliable web products from idea to deployment.
+              My work blends backend architecture, clean UI, and analytics-led improvements.
             </p>
 
             <!-- Social Icons -->
@@ -209,8 +196,11 @@ import mePic from "../assets/images/me_pic.jpg";
           <!-- CTA Buttons -->
           <div class="item-revelar flex flex-wrap gap-4">
             <a
-              href="/projects"
+              href="#projects"
               data-magnetic
+              data-track-event="project_click"
+              data-track-label="hero_view_projects"
+              data-track-location="hero"
               class="group relative inline-flex items-center gap-3 px-8 py-3 text-white bg-Orange-vibrant rounded-lg font-medium overflow-hidden transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-cyan-500/30 hover:shadow-Orange-vibrant/40 hover:-translate-y-0.5 transform"
             >
               <div
@@ -231,8 +221,12 @@ import mePic from "../assets/images/me_pic.jpg";
             </a>
 
             <a
-              href="/resume"
+              href="/gurusharan_resume.pdf"
+              download="gurusharan_resume.pdf"
               data-magnetic
+              data-track-event="resume_download"
+              data-track-label="hero_download_resume"
+              data-track-location="hero"
               class="group relative inline-flex items-center gap-3 px-8 py-3 text-Text-dark dark:text-Text-light bg-Background-light dark:bg-Background-dark border-2 border-Border dark:border-Border-dark rounded-lg font-medium overflow-hidden transition-all duration-300 hover:scale-105 shadow-md hover:shadow-xl hover:shadow-cyan-500/25 hover:border-Cyan-accent dark:hover:border-Cyan-accent-dark hover:-translate-y-0.5 transform"
             >
               <div
@@ -251,7 +245,7 @@ import mePic from "../assets/images/me_pic.jpg";
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              <span class="relative z-10">View Resume</span>
+              <span class="relative z-10">Download Resume</span>
             </a>
           </div>
         </div>

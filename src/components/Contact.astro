@@ -12,13 +12,22 @@ const RESUME_URL = "/resume";
 <section id="contact" class="scroll-mt-[100px]" data-astro-rerun-on-hydrate>
   <div class="container contenedor-revelar mx-auto px-4 py-20 text-center">
     <h2 class="text-3xl sm:text-4xl font-bold mb-4 dark:text-white max-w-3xl mx-auto leading-tight">
-      Let's Build Something Great Together 🚀
+      Let’s Work Together
     </h2>
     <p
       class="font-medium text-base sm:text-lg text-body dark:text-body-light mb-10 max-w-2xl mx-auto"
     >
-      I'm open to internships, freelance work, and collaborations. Let's connect!
+      Currently available for opportunities
     </p>
+    <a
+      href={`mailto:${EMAIL}`}
+      class="inline-flex items-center justify-center mb-10 px-7 py-3 rounded-lg bg-Orange-vibrant text-white dark:bg-Orange-vibrant-dark font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+      data-track-event="contact_click"
+      data-track-label="hire_me_button"
+      data-track-location="contact"
+    >
+      Hire Me
+    </a>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
       <!-- Form -->
@@ -49,7 +58,13 @@ const RESUME_URL = "/resume";
         <div
           class="flex flex-wrap gap-2 sm:gap-3 mb-8 justify-start"
         >
-          <a href={RESUME_URL} class="contact-quick-btn">
+          <a
+            href={RESUME_URL}
+            class="contact-quick-btn"
+            data-track-event="resume_download"
+            data-track-label="contact_view_resume"
+            data-track-location="contact"
+          >
             View Resume
           </a>
           <a
@@ -57,6 +72,9 @@ const RESUME_URL = "/resume";
             target="_blank"
             rel="noopener noreferrer"
             class="contact-quick-btn"
+            data-track-event="contact_click"
+            data-track-label="contact_github_quick"
+            data-track-location="contact"
           >
             GitHub
           </a>
@@ -65,6 +83,9 @@ const RESUME_URL = "/resume";
             target="_blank"
             rel="noopener noreferrer"
             class="contact-quick-btn"
+            data-track-event="contact_click"
+            data-track-label="contact_linkedin_quick"
+            data-track-location="contact"
           >
             LinkedIn
           </a>
@@ -127,6 +148,9 @@ const RESUME_URL = "/resume";
             type="submit"
             id="submit-btn"
             class="contact-submit-btn px-8 py-4 font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 hover:scale-105 inline-flex items-center cursor-pointer justify-center gap-2 bg-Orange-vibrant dark:bg-Orange-vibrant-dark hover:bg-Orange-vibrant/90 w-full disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            data-track-event="contact_click"
+            data-track-label="contact_form_submit"
+            data-track-location="contact"
           >
             <span id="btn-text">Send Message 🚀</span>
             <span id="btn-loading" class="hidden">Sending...</span>
