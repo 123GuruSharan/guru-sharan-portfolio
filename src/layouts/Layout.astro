@@ -43,6 +43,19 @@ const pageDescription =
       gtag("js", new Date());
       gtag("config", "G-3NCVL0Y23N");
     </script>
+    <script is:inline>
+      (function () {
+        function sendSpaPageView() {
+          if (typeof gtag !== "function") return;
+          gtag("event", "page_view", {
+            page_path: window.location.pathname,
+            page_title: document.title,
+            page_location: window.location.href,
+          });
+        }
+        window.addEventListener("astro:page-load", sendSpaPageView);
+      })();
+    </script>
 
   </head>
   <body class={Astro.props.class}>
