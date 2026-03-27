@@ -35,17 +35,6 @@ const pageDescription =
 
     <title>{pageTitle}</title>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NCVL0Y23N"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      window.gtag = window.gtag || gtag;
-      gtag("js", new Date());
-      gtag("config", "G-3NCVL0Y23N");
-    </script>
   </head>
   <body class={Astro.props.class}>
     <div id="cursor-dot" aria-hidden="true"></div>
