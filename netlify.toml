@@ -1,3 +1,8 @@
+# Publish must be Astro's output folder or Netlify never sees dist/_headers.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
