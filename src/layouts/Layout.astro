@@ -34,6 +34,15 @@ const pageDescription =
     <ClientRouter />
 
     <title>{pageTitle}</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NCVL0Y23N"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-3NCVL0Y23N");
+    </script>
 
   </head>
   <body class={Astro.props.class}>
